@@ -8,17 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		4CBC5A1E2849AE110027305C /* CreativeAppFinalProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBC5A1D2849AE110027305C /* CreativeAppFinalProjectApp.swift */; };
-		4CBC5A202849AE110027305C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBC5A1F2849AE110027305C /* ContentView.swift */; };
 		4CBC5A222849AE130027305C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CBC5A212849AE130027305C /* Assets.xcassets */; };
 		4CBC5A252849AE130027305C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CBC5A242849AE130027305C /* Preview Assets.xcassets */; };
+		4CBC5A312849B9FD0027305C /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBC5A302849B9FD0027305C /* SwiftUIView.swift */; };
+		4CBC5A332849F3B30027305C /* JoinRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBC5A322849F3B30027305C /* JoinRoomView.swift */; };
+		4CBC5A352849F4ED0027305C /* EnterName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBC5A342849F4ED0027305C /* EnterName.swift */; };
+		4CBC5A37284A1AD00027305C /* StartGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBC5A36284A1AD00027305C /* StartGameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4CBC5A1A2849AE110027305C /* CreativeAppFinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CreativeAppFinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CBC5A1D2849AE110027305C /* CreativeAppFinalProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreativeAppFinalProjectApp.swift; sourceTree = "<group>"; };
-		4CBC5A1F2849AE110027305C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4CBC5A212849AE130027305C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4CBC5A242849AE130027305C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4CBC5A302849B9FD0027305C /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		4CBC5A322849F3B30027305C /* JoinRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinRoomView.swift; sourceTree = "<group>"; };
+		4CBC5A342849F4ED0027305C /* EnterName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterName.swift; sourceTree = "<group>"; };
+		4CBC5A36284A1AD00027305C /* StartGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +57,8 @@
 		4CBC5A1C2849AE110027305C /* CreativeAppFinalProject */ = {
 			isa = PBXGroup;
 			children = (
+				4CBC5A2F2849B9DA0027305C /* View */,
 				4CBC5A1D2849AE110027305C /* CreativeAppFinalProjectApp.swift */,
-				4CBC5A1F2849AE110027305C /* ContentView.swift */,
 				4CBC5A212849AE130027305C /* Assets.xcassets */,
 				4CBC5A232849AE130027305C /* Preview Content */,
 			);
@@ -65,6 +71,17 @@
 				4CBC5A242849AE130027305C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4CBC5A2F2849B9DA0027305C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4CBC5A302849B9FD0027305C /* SwiftUIView.swift */,
+				4CBC5A322849F3B30027305C /* JoinRoomView.swift */,
+				4CBC5A342849F4ED0027305C /* EnterName.swift */,
+				4CBC5A36284A1AD00027305C /* StartGameView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +154,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CBC5A202849AE110027305C /* ContentView.swift in Sources */,
 				4CBC5A1E2849AE110027305C /* CreativeAppFinalProjectApp.swift in Sources */,
+				4CBC5A352849F4ED0027305C /* EnterName.swift in Sources */,
+				4CBC5A312849B9FD0027305C /* SwiftUIView.swift in Sources */,
+				4CBC5A37284A1AD00027305C /* StartGameView.swift in Sources */,
+				4CBC5A332849F3B30027305C /* JoinRoomView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
