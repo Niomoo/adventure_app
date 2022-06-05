@@ -9,47 +9,53 @@ import SwiftUI
 
 struct JoinRoomView: View {
     @State var buttonState = false
-    @State var roomID = ""
+    @State var rID = ""
     var body: some View {
         
         NavigationView{
-            VStack{
+            VStack(spacing:15){
+                Image("Group 3")
                 Text("Let's Join Us")
                     .fontWeight(.bold)
                     .padding()
-                    .offset(y:150)
                     .font(.system(size: 40))
                     .foregroundColor(.white)
                 Text("歡迎來到誰是探險王！")
                     .fontWeight(.bold)
-                    .font(.system(size: 30))
+                    .font(.system(size: 15))
                     .foregroundColor(.white)
                     .padding()
-                    .offset(y:155)
-                TextField("roomID", text: $roomID, prompt: Text("roomID"))
-                    .frame(width: 300, height: 20)
-                    .padding()
-                    .border(Color.white, width: 2)
-                    .offset(y:165)
+                VStack(alignment: .leading){
+                    Text("RoomNumber")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                    TextField("roomID", text: $rID, prompt: Text("roomID"))
+                        .frame(width: 300, height: 20)
+                        .padding()
+                        .overlay(RoundedRectangle(cornerRadius:10)
+                            .stroke(Color.white,lineWidth: 3))
+                        .foregroundColor(.black)
+                }
                 
-                NavigationLink{
-                    EnterName()
-                }label: {
+                NavigationLink(destination: EnterName(roomID: $rID)){
                     Text("join")
                         .foregroundColor(.white)
+                        .background(.clear)
                         .frame(width: 300, height: 20)
                         .font(.title)
                         .padding()
-                        .border(Color.white,width:2)
+                        .overlay(RoundedRectangle(cornerRadius:10)
+                            .stroke(Color.white,lineWidth: 3))
                 }
-                .offset(y:185)
+                Text("TextField,\(rID)!")
+                    .offset(y:195)
                 Divider()
                 Spacer()
             }
-            .background(Color.teal)
-            .navigationBarTitle("")
-            .navigationBarHidden(true)
+            .background(Color.init(hex:"#69A1AC"))
         }
+        .navigationBarTitle("")
+        .navigationBarHidden(true)
     }
 }
 

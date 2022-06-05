@@ -9,45 +9,59 @@ import SwiftUI
 
 struct EnterName: View {
     @State var nickName = ""
+    @Binding var roomID: String
     var body: some View {
         
         NavigationView{
-            VStack{
-                Text("Welcome To xx Room")
-                
-                Text("Enter Your Nick Name:")
+            VStack(spacing:15){
+                Image("Group 3")
+                Text("\(roomID)")
+                    .foregroundColor(.white)
+                    .font(.system(size: 48))
                     .fontWeight(.bold)
-                    .offset(x:-58,y:155)
-                
-                TextField("nickName", text: $nickName, prompt: Text("nickName"))
-                    .padding()
-                    .frame(width: 300, height:50)
-                    .border(Color.white, width: 2)
-                    .offset(y:155)
-                NavigationLink{
-                    StartGameView()
-                }label: {
-                    Text("Start")
-                        .foregroundColor(.white)
-                        .frame(width: 300, height: 50)
-                        .font(.title)
+                Text("Welcome To \(roomID) Room")
+                VStack(alignment: .leading){
+                    Text("Enter Your Nick Name:")
+                        .fontWeight(.bold)
+                    TextField("nickName", text: $nickName, prompt: Text("nickName"))
                         .padding()
-                        .border(Color.white,width:2)
+                        .frame(width: 300, height:50)
+                        .overlay(RoundedRectangle(cornerRadius:10)
+                            .stroke(Color.white,lineWidth: 3))
                 }
-                .offset(y:165)
+                VStack{
+                    NavigationLink(destination:StartGameView(PlayerName:$nickName)){
+                        Text("Start")
+                            .foregroundColor(.white)
+                            .frame(width: 300, height: 50)
+                            .font(.title)
+                            .padding()
+                            .overlay(RoundedRectangle(cornerRadius:10)
+                                .stroke(Color.white,lineWidth: 3))
+                    }
+                    NavigationLink{
+                        JoinRoomView()
+                    }label: {
+                        Text("Back")
+                            .foregroundColor(.white)
+                            .frame(width: 300, height: 50)
+                            .font(.title)
+                            .padding()
+                    }
+                }
+                
                 Divider()
                 Spacer()
             }
-            .background(Color.teal)
-            .navigationBarHidden(true)
+            .background(Color.init(hex:"#69A1AC"))
         }
-        
-        
+        .navigationBarTitle("")
+        .navigationBarHidden(true)
     }
 }
 
 struct EnterName_Previews: PreviewProvider {
     static var previews: some View {
-        EnterName()
+        EnterName(roomID: .constant("12345"))
     }
 }
