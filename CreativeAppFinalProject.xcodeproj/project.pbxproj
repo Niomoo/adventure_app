@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2CFF9A82284F7FAB00EAD54A /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFF9A79284F7FAB00EAD54A /* SignInView.swift */; };
+		2CFF9A83284F7FAB00EAD54A /* SignUpFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFF9A7A284F7FAB00EAD54A /* SignUpFormView.swift */; };
+		2CFF9A84284F7FAB00EAD54A /* NewQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFF9A7B284F7FAB00EAD54A /* NewQuestionView.swift */; };
+		2CFF9A85284F7FAB00EAD54A /* EditQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFF9A7C284F7FAB00EAD54A /* EditQuestionView.swift */; };
+		2CFF9A86284F7FAB00EAD54A /* EditGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFF9A7D284F7FAB00EAD54A /* EditGameView.swift */; };
+		2CFF9A87284F7FAB00EAD54A /* CheckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFF9A7E284F7FAB00EAD54A /* CheckView.swift */; };
+		2CFF9A88284F7FAB00EAD54A /* CreatingGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFF9A7F284F7FAB00EAD54A /* CreatingGameView.swift */; };
+		2CFF9A89284F7FAB00EAD54A /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFF9A80284F7FAB00EAD54A /* DashboardView.swift */; };
+		2CFF9A8A284F7FAB00EAD54A /* PublishedGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFF9A81284F7FAB00EAD54A /* PublishedGameView.swift */; };
 		4C3D720B284E5ABC00A8778F /* AnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D720A284E5ABB00A8778F /* AnswerView.swift */; };
 		4CBC5A1E2849AE110027305C /* CreativeAppFinalProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBC5A1D2849AE110027305C /* CreativeAppFinalProjectApp.swift */; };
 		4CBC5A222849AE130027305C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CBC5A212849AE130027305C /* Assets.xcassets */; };
@@ -24,11 +33,20 @@
 		4CBC5A4B284C51840027305C /* rankBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBC5A4A284C51840027305C /* rankBarView.swift */; };
 		4CBC5A4D284C5B3C0027305C /* ScoreTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 4CBC5A4C284C5B3C0027305C /* ScoreTest.json */; };
 		4CBC5A4F284C61770027305C /* questionBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBC5A4E284C61770027305C /* questionBarView.swift */; };
-		CEFF9DD0284F73010012EFF8 /* ManualController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF9DCF284F73010012EFF8 /* ManualController.swift */; };
 		4CBC5A51284CDED70027305C /* Choice.json in Resources */ = {isa = PBXBuildFile; fileRef = 4CBC5A50284CDED70027305C /* Choice.json */; };
+		CEFF9DD0284F73010012EFF8 /* ManualController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF9DCF284F73010012EFF8 /* ManualController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2CFF9A79284F7FAB00EAD54A /* SignInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		2CFF9A7A284F7FAB00EAD54A /* SignUpFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpFormView.swift; sourceTree = "<group>"; };
+		2CFF9A7B284F7FAB00EAD54A /* NewQuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewQuestionView.swift; sourceTree = "<group>"; };
+		2CFF9A7C284F7FAB00EAD54A /* EditQuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditQuestionView.swift; sourceTree = "<group>"; };
+		2CFF9A7D284F7FAB00EAD54A /* EditGameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditGameView.swift; sourceTree = "<group>"; };
+		2CFF9A7E284F7FAB00EAD54A /* CheckView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckView.swift; sourceTree = "<group>"; };
+		2CFF9A7F284F7FAB00EAD54A /* CreatingGameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreatingGameView.swift; sourceTree = "<group>"; };
+		2CFF9A80284F7FAB00EAD54A /* DashboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		2CFF9A81284F7FAB00EAD54A /* PublishedGameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublishedGameView.swift; sourceTree = "<group>"; };
 		4C3D720A284E5ABB00A8778F /* AnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerView.swift; sourceTree = "<group>"; };
 		4CBC5A1A2849AE110027305C /* CreativeAppFinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CreativeAppFinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CBC5A1D2849AE110027305C /* CreativeAppFinalProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreativeAppFinalProjectApp.swift; sourceTree = "<group>"; };
@@ -48,8 +66,8 @@
 		4CBC5A4A284C51840027305C /* rankBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rankBarView.swift; sourceTree = "<group>"; };
 		4CBC5A4C284C5B3C0027305C /* ScoreTest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ScoreTest.json; sourceTree = "<group>"; };
 		4CBC5A4E284C61770027305C /* questionBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = questionBarView.swift; sourceTree = "<group>"; };
-		CEFF9DCF284F73010012EFF8 /* ManualController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualController.swift; sourceTree = "<group>"; };
 		4CBC5A50284CDED70027305C /* Choice.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Choice.json; sourceTree = "<group>"; };
+		CEFF9DCF284F73010012EFF8 /* ManualController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +123,15 @@
 		4CBC5A2F2849B9DA0027305C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2CFF9A7E284F7FAB00EAD54A /* CheckView.swift */,
+				2CFF9A7F284F7FAB00EAD54A /* CreatingGameView.swift */,
+				2CFF9A80284F7FAB00EAD54A /* DashboardView.swift */,
+				2CFF9A7D284F7FAB00EAD54A /* EditGameView.swift */,
+				2CFF9A7C284F7FAB00EAD54A /* EditQuestionView.swift */,
+				2CFF9A7B284F7FAB00EAD54A /* NewQuestionView.swift */,
+				2CFF9A81284F7FAB00EAD54A /* PublishedGameView.swift */,
+				2CFF9A79284F7FAB00EAD54A /* SignInView.swift */,
+				2CFF9A7A284F7FAB00EAD54A /* SignUpFormView.swift */,
 				4CBC5A322849F3B30027305C /* JoinRoomView.swift */,
 				4CBC5A342849F4ED0027305C /* EnterName.swift */,
 				4CBC5A36284A1AD00027305C /* StartGameView.swift */,
@@ -220,18 +247,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CFF9A83284F7FAB00EAD54A /* SignUpFormView.swift in Sources */,
 				4CBC5A4B284C51840027305C /* rankBarView.swift in Sources */,
 				4CBC5A4F284C61770027305C /* questionBarView.swift in Sources */,
+				2CFF9A8A284F7FAB00EAD54A /* PublishedGameView.swift in Sources */,
 				4C3D720B284E5ABC00A8778F /* AnswerView.swift in Sources */,
+				2CFF9A85284F7FAB00EAD54A /* EditQuestionView.swift in Sources */,
 				4CBC5A1E2849AE110027305C /* CreativeAppFinalProjectApp.swift in Sources */,
 				4CBC5A352849F4ED0027305C /* EnterName.swift in Sources */,
 				4CBC5A3E284A8B3F0027305C /* colorSetting.swift in Sources */,
 				4CBC5A49284C4CFE0027305C /* Rank.swift in Sources */,
 				4CBC5A37284A1AD00027305C /* StartGameView.swift in Sources */,
+				2CFF9A89284F7FAB00EAD54A /* DashboardView.swift in Sources */,
+				2CFF9A82284F7FAB00EAD54A /* SignInView.swift in Sources */,
+				2CFF9A88284F7FAB00EAD54A /* CreatingGameView.swift in Sources */,
 				CEFF9DD0284F73010012EFF8 /* ManualController.swift in Sources */,
 				4CBC5A39284A60AD0027305C /* RankView.swift in Sources */,
 				4CBC5A332849F3B30027305C /* JoinRoomView.swift in Sources */,
+				2CFF9A84284F7FAB00EAD54A /* NewQuestionView.swift in Sources */,
 				4CBC5A46284C4CC50027305C /* Data.swift in Sources */,
+				2CFF9A87284F7FAB00EAD54A /* CheckView.swift in Sources */,
+				2CFF9A86284F7FAB00EAD54A /* EditGameView.swift in Sources */,
 				4CBC5A3B284A72AB0027305C /* ChooseQuesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
