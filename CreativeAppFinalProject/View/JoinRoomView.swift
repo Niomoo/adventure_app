@@ -14,6 +14,12 @@ struct JoinRoomView: View {
         
         NavigationView{
             VStack(spacing:15){
+                NavigationLink(destination: SignInView()) {
+                    Text("導覽員登入")
+                }
+                .padding()
+                .foregroundColor(.white)
+                .frame(width:315, alignment: .trailing)
                 Image("Group 3")
                 Text("Let's Join Us")
                     .fontWeight(.bold)
