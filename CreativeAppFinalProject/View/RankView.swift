@@ -6,19 +6,28 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct RankView: View {
     @Environment(\.dismiss) var dismiss
+    init() { UITableView.appearance().backgroundColor = UIColor.clear }   // <<: here!
     var body: some View {
-        List(Rank){
-            r in rankBarView(rank: r)
+        VStack{
+            List(Rank){
+                r in
+                rankBarView(rank: r)
+                    .listRowBackground(Color.init(hex: "#69A1AC"))
+            }
+            
+            Spacer()
+            Button("Back") {
+                dismiss()
+            }
+            .foregroundColor(.black)
+            .font(.title)
         }
-        Spacer()
-        Button("Back") {
-            dismiss()
-        }
-        .foregroundColor(.black)
-        .font(.title)
+        .background(Color.init(hex: "#69A1AC"))
+        
     }
 }
 

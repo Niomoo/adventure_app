@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C3D720B284E5ABC00A8778F /* AnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3D720A284E5ABB00A8778F /* AnswerView.swift */; };
 		4CBC5A1E2849AE110027305C /* CreativeAppFinalProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBC5A1D2849AE110027305C /* CreativeAppFinalProjectApp.swift */; };
 		4CBC5A222849AE130027305C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CBC5A212849AE130027305C /* Assets.xcassets */; };
 		4CBC5A252849AE130027305C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CBC5A242849AE130027305C /* Preview Assets.xcassets */; };
@@ -23,9 +24,11 @@
 		4CBC5A4B284C51840027305C /* rankBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBC5A4A284C51840027305C /* rankBarView.swift */; };
 		4CBC5A4D284C5B3C0027305C /* ScoreTest.json in Resources */ = {isa = PBXBuildFile; fileRef = 4CBC5A4C284C5B3C0027305C /* ScoreTest.json */; };
 		4CBC5A4F284C61770027305C /* questionBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBC5A4E284C61770027305C /* questionBarView.swift */; };
+		4CBC5A51284CDED70027305C /* Choice.json in Resources */ = {isa = PBXBuildFile; fileRef = 4CBC5A50284CDED70027305C /* Choice.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C3D720A284E5ABB00A8778F /* AnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerView.swift; sourceTree = "<group>"; };
 		4CBC5A1A2849AE110027305C /* CreativeAppFinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CreativeAppFinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CBC5A1D2849AE110027305C /* CreativeAppFinalProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreativeAppFinalProjectApp.swift; sourceTree = "<group>"; };
 		4CBC5A212849AE130027305C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -44,6 +47,7 @@
 		4CBC5A4A284C51840027305C /* rankBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rankBarView.swift; sourceTree = "<group>"; };
 		4CBC5A4C284C5B3C0027305C /* ScoreTest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ScoreTest.json; sourceTree = "<group>"; };
 		4CBC5A4E284C61770027305C /* questionBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = questionBarView.swift; sourceTree = "<group>"; };
+		4CBC5A50284CDED70027305C /* Choice.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Choice.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,7 @@
 				4CBC5A3A284A72AB0027305C /* ChooseQuesView.swift */,
 				4CBC5A4A284C51840027305C /* rankBarView.swift */,
 				4CBC5A4E284C61770027305C /* questionBarView.swift */,
+				4C3D720A284E5ABB00A8778F /* AnswerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -125,6 +130,7 @@
 				4CBC5A41284A8F520027305C /* Question.json */,
 				4CBC5A43284A92330027305C /* Score.json */,
 				4CBC5A4C284C5B3C0027305C /* ScoreTest.json */,
+				4CBC5A50284CDED70027305C /* Choice.json */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -197,6 +203,7 @@
 			files = (
 				4CBC5A252849AE130027305C /* Preview Assets.xcassets in Resources */,
 				4CBC5A44284A92330027305C /* Score.json in Resources */,
+				4CBC5A51284CDED70027305C /* Choice.json in Resources */,
 				4CBC5A4D284C5B3C0027305C /* ScoreTest.json in Resources */,
 				4CBC5A42284A8F520027305C /* Question.json in Resources */,
 				4CBC5A222849AE130027305C /* Assets.xcassets in Resources */,
@@ -212,6 +219,7 @@
 			files = (
 				4CBC5A4B284C51840027305C /* rankBarView.swift in Sources */,
 				4CBC5A4F284C61770027305C /* questionBarView.swift in Sources */,
+				4C3D720B284E5ABC00A8778F /* AnswerView.swift in Sources */,
 				4CBC5A1E2849AE110027305C /* CreativeAppFinalProjectApp.swift in Sources */,
 				4CBC5A352849F4ED0027305C /* EnterName.swift in Sources */,
 				4CBC5A3E284A8B3F0027305C /* colorSetting.swift in Sources */,
