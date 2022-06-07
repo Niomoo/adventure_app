@@ -9,23 +9,41 @@ import SwiftUI
 
 
 struct questionBarView: View {
-    var ques:QuestionData
+    var choice:OneQuesChoices
     var body: some View {
-            HStack(alignment: .top){
-                Text(ques.question)
-                    .bold()
-                Spacer()
+            HStack{
+                Text(choice.id)
+                    .foregroundColor(.black)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(.black,lineWidth: 3)
+                            .frame(width:200,height: 60)
+                    )
+                
+                
+//                Button(action: {
+//                    optionButton.toggle()
+//                    print("Button Tap")
+//                }, label: {
+//                    ZStack{
+//                        RoundedRectangle(cornerRadius: 10)
+//                            .stroke(optionButton ?  .black:.white,lineWidth: 3)
+//                            .background(optionButton ? .white:.black)
+//                            .frame(width: 320, height: 60)
+//                        Text(choice.id)
+//                            .foregroundColor(optionButton ? .black:.white)
+//                    }
+//
+//                })
             }
-            .frame(width: 320, height: 60)
-            .overlay(RoundedRectangle(cornerRadius:10)
-                .stroke(Color.black,lineWidth: 3)
-                .frame(width: 330, height: 60))
+            .frame(width: 250, height: 60)
+            
         }
     }
 
 struct questionBarView_Previews: PreviewProvider {
     static var previews: some View {
-        questionBarView(ques: Question[0])
+        questionBarView(choice: Choice[0].oneQuesChoice[0])
             .previewLayout(.fixed(width: 320, height: 60))
     }
 }

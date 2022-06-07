@@ -10,16 +10,21 @@ import SwiftUI
 struct rankBarView: View {
     var rank:RankData
     var body: some View {
-        HStack(alignment: .top){
-            Text(rank.id)
-                .bold()
-            Spacer()
-            Text(rank.score)
+        ZStack{
+            RoundedRectangle(cornerRadius:10)
+                .stroke(.white,lineWidth: 3)
+                .frame(width: 330, height: 60)
+            HStack(alignment: .top){
+                Text(rank.id)
+                    .foregroundColor(.white)
+                    .bold()
+                Spacer()
+                Text(rank.score)
+                    .foregroundColor(.white)
+            }
+            .frame(width: 320, height: 60)
         }
-        .frame(width: 320, height: 60)
-        .overlay(RoundedRectangle(cornerRadius:10)
-            .stroke(Color.black,lineWidth: 3)
-            .frame(width: 330, height: 60))
+        
     }
 }
 

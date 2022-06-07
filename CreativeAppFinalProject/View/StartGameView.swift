@@ -13,16 +13,20 @@ struct StartGameView: View {
     @State var RankButtonState = false
     @State var region: MKCoordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 40.75773, longitude: -73.985708), span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
     @Binding var PlayerName : String
+    var Rid : String
     var pointsOfInterest = [
-        AnnotatedItem(name: "Times Square", coordinate: .init(latitude: 40.75773, longitude: -73.985708)),
-        AnnotatedItem(name: "Flatiron Building", coordinate: .init(latitude: 40.741112, longitude: -73.989723)),
-        AnnotatedItem(name: "Empire State Building", coordinate: .init(latitude: 40.748817, longitude: -73.985428))
+        AnnotatedItem(name: "Times Square", coordinate: .init(latitude: 40.75773, longitude: -73.985708),ques: 0),
+        AnnotatedItem(name: "Flatiron Building", coordinate: .init(latitude: 40.741112, longitude: -73.989723),ques: 1),
+        AnnotatedItem(name: "Empire State Building", coordinate: .init(latitude: 40.748817, longitude: -73.985428),ques: 2)
         ]
+    
     var body: some View {
+        
         NavigationView{
+            
             VStack{
                 VStack(alignment:.leading){
-                    Text("踏碩台南")
+                    Text("踏碩台南\(Rid)")
                         .font(.system(size: 40))
                         .fontWeight(.bold)
                         .foregroundColor(.black)
@@ -31,23 +35,21 @@ struct StartGameView: View {
                         .fontWeight(.bold)
                         .foregroundColor(.black)
                 }
-                .position(x: 90, y: -20)
-                
-                HStack(){
-                    Map(coordinateRegion: $region,showsUserLocation: true,annotationItems: pointsOfInterest)
-                    {
+                .position(x: 130)
+                HStack{
+                    Map(coordinateRegion: $region,showsUserLocation: true,annotationItems: pointsOfInterest){
                         item in MapAnnotation(coordinate: item.coordinate)
                         {
                             NavigationLink {
-                                            ChooseQuesView()
+                                ChooseQuesView(QuesIndex:item.ques, Rid: Rid,pName: $PlayerName, opt: 0)
                                         } label: {
                                             Circle()
                                                 .stroke(.red, lineWidth: 3)
                                                 .frame(width: 44, height: 44)
                                         }
-
                         }
                     }
+                    
                 }
                 .frame(width: 500, height: 530)
                 .background(.white)
@@ -95,12 +97,14 @@ struct StartGameView: View {
 //                    .padding()
                     
                     }
-                    
+                    let currentScore = getDat(PlayerName: PlayerName)[0]
+                    let currentRank = getDat(PlayerName: PlayerName)[1]
                     VStack{
-                        Text("目前排名：")
                         
-                        Text("目前分數：")
-                    }
+                        Text("目前排名：\(currentRank)")
+                        
+                        Text("目前分數：\(currentScore)")
+                        }
                 }
                 Divider()
                 Spacer()
@@ -111,10 +115,13 @@ struct StartGameView: View {
     }
 }
 
+
+
 struct AnnotatedItem: Identifiable {
     let id = UUID()
     var name: String
     var coordinate: CLLocationCoordinate2D
+    var ques:Int
 }
 
 
@@ -146,12 +153,13 @@ struct SheetView: View {
             Spacer()
         }
         .background(Color.teal)
+        
     }
 }
 
 struct StartGameView_Previews: PreviewProvider {
     static var previews: some View {
-        StartGameView(PlayerName:.constant("abc"))
+        StartGameView(PlayerName:.constant("ABC"), Rid:"rid")
     }
 }
 
@@ -168,4 +176,3 @@ extension View {
         modifier( HiddenNavigationBar() )
     }
 }
-
