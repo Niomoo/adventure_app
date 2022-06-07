@@ -37,6 +37,8 @@ struct QuestionData:Identifiable,Codable{
     var id:String
     var score:String
     var question:String
+    var latitude :String
+    var longitude : String
     var feedback_true:String
     var feedback_false:String
 }

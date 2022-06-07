@@ -2,6 +2,8 @@
     {
         "id":"1",
         "question":"ABC",
+        "latitude":"12.345",
+        "longitude":"13.256",
         "score":"3",
         "feedback_true":"go left",
         "feedback_false":"go right"
@@ -9,6 +11,8 @@
      {
         "id":"2",
         "question":"DEF",
+        "latitude":"12.345",
+        "longitude":"13.256",
         "score":"2",
         "feedback_true":"go left",
         "feedback_false":"go right"
@@ -16,6 +20,8 @@
      {
         "id":"3",
         "question":"GHZ",
+        "latitude":"12.345",
+        "longitude":"13.256",
         "score":"1",
         "feedback_true":"go left",
         "feedback_false":"go right"
