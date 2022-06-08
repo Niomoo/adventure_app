@@ -37,6 +37,7 @@ struct ChooseQuesView: View {
                             .frame(width:350,height: 60)
                     )
                     .offset(y:-300)
+                
                 ForEach(0..<Options.count){i in
                     HStack{
                         questionBarView(choice: Options[i])

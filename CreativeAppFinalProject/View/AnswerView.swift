@@ -16,8 +16,10 @@ struct AnswerView: View {
     var correct = false
     var body: some View {
         NavigationView{
+           
             VStack(alignment: .center, spacing: 15){
                 let Options=Choice[QuesIndex].oneQuesChoice
+                
                 VStack(alignment: .leading){
                     Text("踏溯高雄")
                         .font(.system(size: 40))
@@ -37,6 +39,7 @@ struct AnswerView: View {
                             .frame(width:350,height: 60)
                     )
                     .offset(y:-120)
+                
                 
                 ForEach(0..<Options.count){i in
                     HStack{
@@ -61,6 +64,8 @@ struct AnswerView: View {
                 }
                 VStack{
                     if(correct){
+                        var i = updatescore(PlayerName: pName,AddScore: Question[QuesIndex].score)
+                        var k = sortRank()
                         Text("恭喜答對獲得\(Question[QuesIndex].score)分")
                             .font(.system(size: 25,weight: .bold))
                             .foregroundColor(.white)

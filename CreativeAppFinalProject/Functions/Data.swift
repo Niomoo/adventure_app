@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-let Rank: [RankData] = load("Score.json")
+var Rank: [RankData] = load("Score.json")
 let Question: [QuestionData] = load("ScoreTest.json")
 let
 Ques1Choice = Choices(
@@ -95,3 +95,26 @@ func getDat(PlayerName:String)->[String]{
     }
     return [currentScore,currentRank]
 }
+
+func updatescore(PlayerName:String,AddScore:String)->RankData{
+    var r:RankData=Rank[0]
+    var addScore = Int(AddScore) ?? 0
+    for i in (0..<Rank.count){
+        if(Rank[i].id==PlayerName){
+            var score = Int(Rank[i].score) ?? 0
+            score+=addScore
+            Rank[i].score = String(score)
+            r = Rank[i]
+        }
+    }
+    return r
+}
+
+func sortRank()->[RankData]{
+    Rank.sort{$0.score>$1.score}
+    for i in (0..<Rank.count){
+        Rank[i].rank = String(i+1)
+    }
+    return Rank
+}
+
