@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C7B8D4C2850D6B700013220 /* UpdateQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B8D4B2850D6B700013220 /* UpdateQuestionView.swift */; };
 		2CFF9A82284F7FAB00EAD54A /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFF9A79284F7FAB00EAD54A /* SignInView.swift */; };
 		2CFF9A83284F7FAB00EAD54A /* SignUpFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFF9A7A284F7FAB00EAD54A /* SignUpFormView.swift */; };
 		2CFF9A84284F7FAB00EAD54A /* NewQuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFF9A7B284F7FAB00EAD54A /* NewQuestionView.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C7B8D4B2850D6B700013220 /* UpdateQuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateQuestionView.swift; sourceTree = "<group>"; };
 		2CFF9A79284F7FAB00EAD54A /* SignInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		2CFF9A7A284F7FAB00EAD54A /* SignUpFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpFormView.swift; sourceTree = "<group>"; };
 		2CFF9A7B284F7FAB00EAD54A /* NewQuestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewQuestionView.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 		4CBC5A2F2849B9DA0027305C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				2C7B8D4B2850D6B700013220 /* UpdateQuestionView.swift */,
 				2CFF9A7E284F7FAB00EAD54A /* CheckView.swift */,
 				2CFF9A7F284F7FAB00EAD54A /* CreatingGameView.swift */,
 				2CFF9A80284F7FAB00EAD54A /* DashboardView.swift */,
@@ -263,6 +266,7 @@
 				4CBC5A1E2849AE110027305C /* CreativeAppFinalProjectApp.swift in Sources */,
 				4CBC5A352849F4ED0027305C /* EnterName.swift in Sources */,
 				4CBC5A3E284A8B3F0027305C /* colorSetting.swift in Sources */,
+				2C7B8D4C2850D6B700013220 /* UpdateQuestionView.swift in Sources */,
 				4CBC5A49284C4CFE0027305C /* Rank.swift in Sources */,
 				4CBC5A37284A1AD00027305C /* StartGameView.swift in Sources */,
 				2CFF9A89284F7FAB00EAD54A /* DashboardView.swift in Sources */,

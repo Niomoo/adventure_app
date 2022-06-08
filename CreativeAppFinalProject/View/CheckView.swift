@@ -7,8 +7,14 @@
 
 import SwiftUI
 
+var allQuestions = [
+    QuestionData(id:"1", score:"3", question:"高雄輕軌有經過駁二特區嗎？", feedback_true: "go left", feedback_false: "go right", longitude: "120.28149", latitude: "22.61987"),
+    QuestionData(id:"2", score:"2", question:"哪一座大學在西子灣？", feedback_true: "go left", feedback_false: "go right", longitude: "120.26385", latitude: "22.6268"),
+    QuestionData(id:"3", score:"1", question:"椅子樂譜是由幾張椅子組成？", feedback_true: "go left", feedback_false: "go right", longitude: "120.28644", latitude: "22.61799")
+]
+
 struct CheckView: View {
-    @State var title = "踏溯台南"
+    @State var title = "踏溯高雄"
     @State var rID = "GA0001"
     @State var description = "Pellentesque ut tellus luctus, fermentum justo quis, lobortis mi. Praesent volutpat odio non neque iaculis condimentum. Aenean arcu leo, sollicitudin vel pulvinar vel, fermentum ut dolor."
     var body: some View {
@@ -30,59 +36,8 @@ struct CheckView: View {
                 Text("問題列表")
                     .underline(color: Color.init(hex:"#69A1AC"))
                     .frame(width:315, alignment: .leading)
-                ScrollView {
-                    Menu("Question A") {
-                        NavigationLink(destination: CheckView()) {
-                            Text("編輯")
-                        }
-                        NavigationLink(destination: CheckView()) {
-                            Text("刪除")
-                        }
-                    }
-                    .frame(width: 315, height: 87)
-                    .font(.system(size:18))
-                    .foregroundColor(Color.black)
-                    .background(Color.init(UIColor(red: 0.839, green: 0.89, blue: 0.886, alpha: 1).cgColor))
-                    .cornerRadius(8)
-                    Menu("Question B") {
-                        NavigationLink(destination: CheckView()) {
-                            Text("編輯")
-                        }
-                        NavigationLink(destination: CheckView()) {
-                            Text("刪除")
-                        }
-                    }
-                    .frame(width: 315, height: 87)
-                    .font(.system(size:18))
-                    .foregroundColor(Color.black)
-                    .background(Color.init(UIColor(red: 0.839, green: 0.89, blue: 0.886, alpha: 1).cgColor))
-                    .cornerRadius(8)
-                    Menu("Question C") {
-                        NavigationLink(destination: CheckView()) {
-                            Text("編輯")
-                        }
-                        NavigationLink(destination: CheckView()) {
-                            Text("刪除")
-                        }
-                    }
-                    .frame(width: 315, height: 87)
-                    .font(.system(size:18))
-                    .foregroundColor(Color.black)
-                    .background(Color.init(UIColor(red: 0.839, green: 0.89, blue: 0.886, alpha: 1).cgColor))
-                    .cornerRadius(8)
-                    Menu("Question D") {
-                        NavigationLink(destination: CheckView()) {
-                            Text("編輯")
-                        }
-                        NavigationLink(destination: CheckView()) {
-                            Text("刪除")
-                        }
-                    }
-                    .frame(width: 315, height: 87)
-                    .font(.system(size:18))
-                    .foregroundColor(Color.black)
-                    .background(Color.init(UIColor(red: 0.839, green: 0.89, blue: 0.886, alpha: 1).cgColor))
-                    .cornerRadius(8)
+                List(allQuestions) { element in
+                    Text("\(element.question)")
                 }
                 HStack(spacing:50) {
                     NavigationLink(destination: DashboardView()) {

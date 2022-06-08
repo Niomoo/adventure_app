@@ -1,5 +1,5 @@
 //
-//  NewQuestionView.swift
+//  UpdateQuestionView.swift
 //  CreativeAppFinalProject
 //
 //  Created by 李嘉峻 on 2022/6/7.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NewQuestionView: View {
+struct UpdateQuestionView: View {
     @State var question = ""
     @State var choice1 = ""
     @State var choice2 = ""
@@ -114,7 +114,7 @@ struct NewQuestionView: View {
                     .cornerRadius(8)
                     .frame(width: 315, height: 50)
                 NavigationLink(destination: EditQuestionView(gameID: 123)) {
-                    Text("Create")
+                    Text("Edit")
                         .frame(width: 315, height: 50)
                         .font(.system(size:18))
                         .foregroundColor(.white)
@@ -130,8 +130,8 @@ struct NewQuestionView: View {
     }
 }
 
-struct NewQuestionView_Previews: PreviewProvider {
+struct UpdateQuestionView_Previews: PreviewProvider {
     static var previews: some View {
-        NewQuestionView()
+        UpdateQuestionView()
     }
 }

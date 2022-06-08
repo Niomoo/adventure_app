@@ -53,8 +53,6 @@ struct JoinRoomView: View {
                         .overlay(RoundedRectangle(cornerRadius:10)
                             .stroke(Color.white,lineWidth: 3))
                 }
-                Text("TextField,\(rID)!")
-                    .offset(y:195)
                 Divider()
                 Spacer()
             }
