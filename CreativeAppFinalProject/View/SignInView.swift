@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SignInView: View {
-    @State private var email = ""
+    @State private var account = ""
     @State private var password = ""
     @State private var wrongEmail = 0
     @State private var wrongPassword = 0
@@ -33,17 +33,17 @@ struct SignInView: View {
                         .foregroundColor(.white)
                         .bold()
                         .padding(.bottom)
-                    Text("Email")
+                    Text("Account")
                         .font(Font.system(size:14))
                         .foregroundColor(.white)
                         .frame(width:315, alignment: .leading)
-                    TextField("email", text: $email, prompt: Text("＠"))
+                    TextField("account", text: $account, prompt: Text("＠"))
                         .padding()
                         .background(Color(UIColor(red: 0.839, green: 0.89, blue: 0.886, alpha: 1).cgColor))
                         .cornerRadius(8)
                         .frame(width: 315, height: 50)
-                        
-                        
+                        .autocapitalization(.none)
+
                     Text("Password")
                         .font(Font.system(size:14))
                         .foregroundColor(.white)
@@ -56,7 +56,9 @@ struct SignInView: View {
                         .frame(width: 315, height: 50)
                 }
                 
-                NavigationLink(destination: DashboardView()) {
+                NavigationLink(destination: DashboardView().onAppear {
+                    self.loginAccount(account: account, password: password)
+                }) {
                     Text("Sign In")
                         .frame(width: 315, height: 50)
                         .font(.system(size:18))
@@ -77,6 +79,12 @@ struct SignInView: View {
         }
         .navigationBarTitle("")
         .navigationBarHidden(true)
+    }
+    func loginAccount(account: String, password: String){
+        let account = Account(account: account, password: password)
+        login(loginAccount: account).send { result in
+            print(result)
+        }
     }
 }
 

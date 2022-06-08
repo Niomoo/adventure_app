@@ -8,7 +8,7 @@
 import Foundation
 
 struct login: APIRequest {
-    typealias Response = [String: Manager]
+    typealias Response = Manager
     var loginAccount: Account
     var path: String { "/login" }
     var httpMethod: HTTPMethod { .POST }
@@ -19,7 +19,7 @@ struct login: APIRequest {
 }
 
 struct createAccount: APIRequest {
-    typealias Response = [String: Manager]
+    typealias Response = Void
     var create: Account
     var path: String { "/createAccount" }
     var httpMethod: HTTPMethod { .POST }

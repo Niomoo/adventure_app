@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SignUpFormView: View {
-    @State private var email = ""
+    @State private var account = ""
     @State private var password = ""
     @State private var passwordCon = ""
     @State private var wrongEmail = 0
@@ -34,12 +34,12 @@ struct SignUpFormView: View {
                         .font(Font.system(size:14))
                         .foregroundColor(.white)
                         .frame(width:315, alignment: .leading)
-                    TextField("email", text: $email, prompt: Text("＠"))
+                    TextField("account", text: $account, prompt: Text("＠"))
                         .padding()
                         .background(Color(UIColor(red: 0.839, green: 0.89, blue: 0.886, alpha: 1).cgColor))
                         .cornerRadius(8)
                         .frame(width: 315, height: 50)
-                        
+                        .autocapitalization(.none)
                         
                     Text("Password")
                         .font(Font.system(size:14))
@@ -65,7 +65,9 @@ struct SignUpFormView: View {
                         .frame(width: 315, height: 50)
                 }
                 Spacer()
-                NavigationLink(destination: SignInView()) {
+                NavigationLink(destination: SignInView().onAppear {
+                    self.signupAccount(account: account, password: password)
+                }) {
                     Text("Sign Up")
                         .frame(width: 315, height: 50)
                         .font(.system(size:18))
@@ -86,6 +88,12 @@ struct SignUpFormView: View {
         }
         .navigationBarTitle("")
         .navigationBarHidden(true)
+    }
+    func signupAccount(account: String, password: String) {
+        let account = Account(account: account, password: password)
+        createAccount(create: account).send { result in
+            print(result)
+        }
     }
 }
 

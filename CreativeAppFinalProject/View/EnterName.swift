@@ -63,7 +63,7 @@ struct EnterName: View {
     func joinRoom(roomID: String, nickName: String){
         let player = NewPlayer(gameID: roomID, name: nickName)
         joinGame(player: player).send { result in
-            print(result)
+            print()
         }
     }
 }
