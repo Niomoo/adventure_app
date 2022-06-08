@@ -60,7 +60,7 @@ def createAccount():
         mycursor1.close()
         return jsonify({'return': "successcreate"})
 
-@app.route('/getAllGames', methods=['GET'])
+@app.route('/getAllGames/', methods=['GET'])
 def getAllGames():
     account=request.values.get('account')
     mycursor1 = db_connection.cursor()
@@ -72,11 +72,10 @@ def getAllGames():
     else:
         return "NOGAME"
 
-@app.route('/getAllQuestions', methods=['GET'])
+@app.route('/getAllQuestions/', methods=['GET'])
 def getAllQuestions():
-    # 取得前端傳過來的數值
-    insertValues = request.get_json()
-    gameID=insertValues['gameID']
+
+    gameID=request.values.get('gameID')
     mycursor1 = db_connection.cursor()
     mycursor1.execute("Select * From Question Where gID = %s", (gameID,))
     myresult1 = mycursor1.fetchall()
@@ -199,12 +198,11 @@ def updateQuestion():
     mycursor1.close()
     return jsonify({'return': 'updateQuestionOK' })
 
-@app.route('/getScore', methods=['GET'])
+@app.route('/getScore/', methods=['GET'])
 def getScore():
-    # 取得前端傳過來的數值
-    insertValues = request.get_json()
-    gameID=insertValues['gameID']
-    name = insertValues['name']
+
+    gameID=request.values.get('gameID')
+    name = request.values.get('name')
     mycursor1 = db_connection.cursor()
     mycursor1.execute("Select `score`, `rank` From Player Where gID = %s And nickname = %s", (gameID,name,))
     myresult1 = mycursor1.fetchall()
@@ -252,22 +250,20 @@ def updateScore():
     mycursor2.close()
     return jsonify({'return': 'updateScoreOK' })
 
-@app.route('/getRank', methods=['GET'])
+@app.route('/getRank/', methods=['GET'])
 def getRank():
-    # 取得前端傳過來的數值
-    insertValues = request.get_json()
-    gameID = insertValues['gameID']
+
+    gameID = request.values.get('gameID')
     mycursor1 = db_connection.cursor()
     mycursor1.execute("SELECT `nickname`,`score`,`rank` FROM Player Where gID = %s", (gameID,))
     myresult1 = mycursor1.fetchall()
     mycursor1.close()
     return jsonify({'return': myresult1 })
 
-@app.route('/getQuestion', methods=['GET'])
+@app.route('/getQuestion/', methods=['GET'])
 def getQuestion():
-    # 取得前端傳過來的數值
-    insertValues = request.get_json()
-    questionID = insertValues['questionID']
+
+    questionID = request.values.get('questionID')
     mycursor1 = db_connection.cursor()
     mycursor1.execute("SELECT `question`,`qType`,`latitude`,`longitude`,`score`,`feedback_right`,"
                       "`feedback_wrong` FROM Question Where QID = %s", (questionID,))
