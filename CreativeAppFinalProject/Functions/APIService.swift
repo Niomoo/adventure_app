@@ -10,7 +10,7 @@ import Foundation
 struct login: APIRequest {
     typealias Response = [String: Manager]
     var loginAccount: Account
-    var path: String { "/login/" }
+    var path: String { "/login" }
     var httpMethod: HTTPMethod { .POST }
     var httpBody: Data? {
         let encoder = JSONEncoder()
@@ -21,7 +21,7 @@ struct login: APIRequest {
 struct createAccount: APIRequest {
     typealias Response = [String: Manager]
     var create: Account
-    var path: String { "/createAccount/" }
+    var path: String { "/createAccount" }
     var httpMethod: HTTPMethod { .POST }
     var httpBody: Data? {
         let encoder = JSONEncoder()
