@@ -17,14 +17,14 @@ struct NewQuestionView: View {
     @State var answer3 = false
     @State var feedback1 = ""
     @State var feedback2 = ""
-    @State var score = 0
+    @State var score = ""
     @State var location = ""
 
     var body: some View {
         NavigationView{
             ScrollView(){
                 VStack(alignment: .leading){
-                    Text("踏溯台南")
+                    Text("踏溯高雄")
                         .font(.system(size:24))
                         .font(.largeTitle)
                         .foregroundColor(.white)
@@ -67,7 +67,7 @@ struct NewQuestionView: View {
                     }
                     .padding(.bottom)
                     ZStack {
-                        TextField("choice3", text: $choice1, prompt: Text("Ｃ"))
+                        TextField("choice3", text: $choice3, prompt: Text("Ｃ"))
                             .padding()
                             .background(Color(UIColor(red: 0.839, green: 0.89, blue: 0.886, alpha: 1).cgColor))
                             .cornerRadius(8)
@@ -88,7 +88,7 @@ struct NewQuestionView: View {
                     .background(Color(UIColor(red: 0.839, green: 0.89, blue: 0.886, alpha: 1).cgColor))
                     .cornerRadius(8)
                     .frame(width: 315, height: 50)
-                TextField("question", text: $question, prompt: Text("✕"))
+                TextField("feedback2", text: $feedback2, prompt: Text("✕"))
                     .padding()
                     .background(Color(UIColor(red: 0.839, green: 0.89, blue: 0.886, alpha: 1).cgColor))
                     .cornerRadius(8)
@@ -108,12 +108,12 @@ struct NewQuestionView: View {
                     .font(Font.system(size:14))
                     .foregroundColor(.white)
                     .frame(width:315, alignment: .leading)
-                TextField("score", text: $feedback1, prompt: Text("☆"))
+                TextField("score", text: $score, prompt: Text("☆"))
                     .padding()
                     .background(Color(UIColor(red: 0.839, green: 0.89, blue: 0.886, alpha: 1).cgColor))
                     .cornerRadius(8)
                     .frame(width: 315, height: 50)
-                NavigationLink(destination: EditQuestionView()) {
+                NavigationLink(destination: EditQuestionView(gameID: 123)) {
                     Text("Create")
                         .frame(width: 315, height: 50)
                         .font(.system(size:18))

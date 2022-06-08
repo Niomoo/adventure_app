@@ -5,30 +5,30 @@
 //  Created by 劉育瑄 on 2022/6/8.
 //
 
-//import Foundation
-//
-//struct login: APIRequest {
-//    typealias Response = [String: Manager]
-//    var loginAccount: Account
-//    var path: String { "/login" }
-//    var httpMethod: HTTPMethod { .POST }
-//    var httpBody: Data? {
-//        let encoder = JSONEncoder()
-//        return try? encoder.encode(loginAccount)
-//    }
-//}
-//
-//struct createAccount: APIRequest {
-//    typealias Response = [String: Manager]
-//    var create: Account
-//    var path: String { "/createAccount" }
-//    var httpMethod: HTTPMethod { .POST }
-//    var httpBody: Data? {
-//        let encoder = JSONEncoder()
-//        return try? encoder.encode(create)
-//    }
-//}
-//
+import Foundation
+
+struct login: APIRequest {
+    typealias Response = [String: Manager]
+    var loginAccount: Account
+    var path: String { "/login" }
+    var httpMethod: HTTPMethod { .POST }
+    var httpBody: Data? {
+        let encoder = JSONEncoder()
+        return try? encoder.encode(loginAccount)
+    }
+}
+
+struct createAccount: APIRequest {
+    typealias Response = [String: Manager]
+    var create: Account
+    var path: String { "/createAccount" }
+    var httpMethod: HTTPMethod { .POST }
+    var httpBody: Data? {
+        let encoder = JSONEncoder()
+        return try? encoder.encode(create)
+    }
+}
+
 //struct getAllGames: APIRequest {
 //    typealias Response = GameList
 //    var manager: String?

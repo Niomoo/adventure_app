@@ -42,7 +42,7 @@ struct EditGameView: View {
                         .frame(width: 315, height: 175)
                 }
                 
-                NavigationLink(destination: PublishedGameView()) {
+                NavigationLink(destination: EditQuestionView(gameID: 123)) {
                     Text("Ok")
                         .frame(width: 315, height: 50)
                         .font(.system(size:18))
@@ -50,7 +50,7 @@ struct EditGameView: View {
                         .border(/*@START_MENU_TOKEN@*/Color.white/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/3/*@END_MENU_TOKEN@*/)
                         .cornerRadius(8)
                 }
-                NavigationLink(destination: DashboardView()) {
+                NavigationLink(destination: EditQuestionView(gameID: 123)) {
                     Text("Back")
                         .frame(width: 315, height: 50)
                         .font(.system(size:18))

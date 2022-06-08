@@ -5,7 +5,7 @@
 //  Created by 劉育瑄 on 2022/6/8.
 //
 
-//import Foundation
+import Foundation
 //
 //struct Player {
 //    let name: String
@@ -20,17 +20,17 @@
 //}
 //extension NewPlayer: Codable { }
 //
-//struct Account {
-//    let account: String
-//    let password: String
-//}
-//extension Account: Codable { }
-//
-//struct Manager {
-//    let account: String
-//}
-//extension Manager: Codable { }
-//
+struct Account {
+    let account: String
+    let password: String
+}
+extension Account: Codable { }
+
+struct Manager {
+    let account: String
+}
+extension Manager: Codable { }
+
 //struct Game {
 //    let gameID: Int
 //    let title: String

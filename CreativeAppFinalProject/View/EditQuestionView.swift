@@ -8,81 +8,40 @@
 import SwiftUI
 
 struct EditQuestionView: View {
-    @State var title = "踏溯台南"
-    @State var rID = "GA0001"
-    @State var description = "Pellentesque ut tellus luctus, fermentum justo quis, lobortis mi. Praesent volutpat odio non neque iaculis condimentum. Aenean arcu leo, sollicitudin vel pulvinar vel, fermentum ut dolor."
+    @State var title = "踏溯高雄"
+    @State var gameID: Int32
+    @State var description = "臺灣南方最繁華的國際城市——高雄市，為2009年世界運動會主辦城市，因受海洋氣候調節，全年陽光普照、氣候宜人，有獨特的「海洋首都」特性。近年來大力推展觀光事業，已成為全臺最美麗的城市之一。"
+    @State var state = false
     var body: some View {
         NavigationView{
             VStack(spacing:15){
-                Text(title)
-                    .font(.system(size:28))
-                    .font(.largeTitle)
-                    .bold()
-                    .padding(.bottom)
-                    .frame(width:315, alignment: .leading)
-                Text("# " + rID)
+                    Text(title)
+                        .font(.system(size:28))
+                        .font(.largeTitle)
+                        .bold()
+                        .padding(.bottom)
+                        .frame(width:315, alignment: .leading)
+
+                Text("# \(gameID)")
                     .frame(width:315, alignment: .leading)
                     .padding(.bottom)
                 Text(description)
                     .frame(width:315, alignment: .leading)
                     .padding(.bottom)
-
+                HStack {
+                    Text(state ?"遊戲已開始":"遊戲未開始")
+                        .font(.system(size:18))
+                    Toggle(isOn: $state) {
+                    }
+                }
+                .frame(width:200, alignment: .leading)
                 Text("問題列表")
                     .underline(color: Color.init(hex:"#69A1AC"))
                     .frame(width:315, alignment: .leading)
-                ScrollView {
-                    Menu("Question A") {
-                        NavigationLink(destination: CheckView()) {
-                            Text("編輯")
-                        }
-                        NavigationLink(destination: CheckView()) {
-                            Text("刪除")
-                        }
+                List(allQuestions) { element in
+                    NavigationLink(destination: UpdateQuestionView()) {
+                        Text("\(element.question)")
                     }
-                    .frame(width: 315, height: 87)
-                    .font(.system(size:18))
-                    .foregroundColor(Color.black)
-                    .background(Color.init(UIColor(red: 0.839, green: 0.89, blue: 0.886, alpha: 1).cgColor))
-                    .cornerRadius(8)
-                    Menu("Question B") {
-                        NavigationLink(destination: CheckView()) {
-                            Text("編輯")
-                        }
-                        NavigationLink(destination: CheckView()) {
-                            Text("刪除")
-                        }
-                    }
-                    .frame(width: 315, height: 87)
-                    .font(.system(size:18))
-                    .foregroundColor(Color.black)
-                    .background(Color.init(UIColor(red: 0.839, green: 0.89, blue: 0.886, alpha: 1).cgColor))
-                    .cornerRadius(8)
-                    Menu("Question C") {
-                        NavigationLink(destination: CheckView()) {
-                            Text("編輯")
-                        }
-                        NavigationLink(destination: CheckView()) {
-                            Text("刪除")
-                        }
-                    }
-                    .frame(width: 315, height: 87)
-                    .font(.system(size:18))
-                    .foregroundColor(Color.black)
-                    .background(Color.init(UIColor(red: 0.839, green: 0.89, blue: 0.886, alpha: 1).cgColor))
-                    .cornerRadius(8)
-                    Menu("Question D") {
-                        NavigationLink(destination: CheckView()) {
-                            Text("編輯")
-                        }
-                        NavigationLink(destination: CheckView()) {
-                            Text("刪除")
-                        }
-                    }
-                    .frame(width: 315, height: 87)
-                    .font(.system(size:18))
-                    .foregroundColor(Color.black)
-                    .background(Color.init(UIColor(red: 0.839, green: 0.89, blue: 0.886, alpha: 1).cgColor))
-                    .cornerRadius(8)
                 }
                 HStack(spacing:50) {
                     NavigationLink(destination: DashboardView()) {
@@ -106,8 +65,8 @@ struct EditQuestionView: View {
                             .fill(Color.init(hex:"#69A1AC"))
                             .frame(width: 55, height: 55)
                     )
-                    NavigationLink(destination: DashboardView()) {
-                        Text("✓")
+                    NavigationLink(destination: EditGameView()) {
+                        Text("✎")
                     }
                     .font(.system(size:36))
                     .foregroundColor(Color.white)
@@ -126,6 +85,6 @@ struct EditQuestionView: View {
 
 struct EditQuestionView_Previews: PreviewProvider {
     static var previews: some View {
-        EditQuestionView()
+        EditQuestionView(gameID: 123)
     }
 }
