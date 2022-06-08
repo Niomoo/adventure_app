@@ -79,7 +79,7 @@ def getAllGames():
             user['status'] = myresult1[i][3]
             value.append(user)
         # data['users'] = users
-        return json.dumps(value)
+        return json.dumps(value,ensure_ascii=False)
     else:
         return "NOGAME"
 
@@ -91,23 +91,29 @@ def getAllQuestions():
     mycursor1.execute("Select * From Question Where gID = %s", (gameID,))
     myresult1 = mycursor1.fetchall()
 
-    # i = 0
-    # for i in range(len(myresult1)):
-    #     value[i] = {
-    #         "questionID": myresult[0][0],
-    #         "question": myresult[0][1],
-    #         "type": myresult[0][2],
-    #         "latitude": myresult[0][3],
-    #         "longitude": myresult[0][0],
-    #         "score": myresult[0][0],
-    #         "choice": myresult[0][0],
-    #         "feedback_right": myresult[0][0],
-    #         "feedback_wrong": myresult[0][0]
-    #     }
 
     mycursor1.close()
     if  len(myresult1) != 0:
-        return myresult1
+        # value = []
+        # i = 0
+        # for i in range(len(myresult1)):
+        #     user = {}
+        #     user['gameID'] = myresult1[i][0]
+        #     user['title'] = myresult1[i][1]
+        #     user['description'] = myresult1[i][2]
+        #     user['status'] = myresult1[i][3]
+        #     "questionID": myresult[0][0],
+        #     "question": myresult[0][1],
+        #     "type": myresult[0][2],
+        #     "latitude": myresult[0][3],
+        #     "longitude": myresult[0][0],
+        #     "score": myresult[0][0],
+        #     "choice": myresult[0][0],
+        #     "feedback_right": myresult[0][0],
+        #     "feedback_wrong": myresult[0][0]
+        #     value.append(user)
+        # # data['users'] = users
+        # return json.dumps(value, ensure_ascii=False)
     else:
         return "NOQuestion"
 
