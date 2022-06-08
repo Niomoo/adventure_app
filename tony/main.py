@@ -62,9 +62,7 @@ def createAccount():
 
 @app.route('/getAllGames', methods=['GET'])
 def getAllGames():
-    # 取得前端傳過來的數值
-    insertValues = request.get_json()
-    account=insertValues['account']
+    account=request.values.get('account')
     mycursor1 = db_connection.cursor()
     mycursor1.execute("Select gID,name,description From Game,Manager Where mID = owner And username=%s", (account,))
     myresult1 = mycursor1.fetchall()
