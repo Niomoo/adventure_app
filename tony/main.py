@@ -15,7 +15,6 @@ PASSWORD = "wQ76pgmCix"
 db_connection = mysql.connect(host=HOST, database=DATABASE, user=USER, password=PASSWORD)
 print("Connected to:", db_connection.get_server_info())
 # enter your code here!
-mycursor1 = db_connection.cursor()
 
 app = Flask(__name__)
 CORS(app)
@@ -38,7 +37,7 @@ def login():
 
     for x in myresult:
         print(x)
-
+    mycursor.close()
     return jsonify({'return': myresult })
 
 @app.route('/createAccount', methods=['POST'])
@@ -51,12 +50,14 @@ def createAccount():
     mycursor1.execute("Select username From Manager Where username = %s", (account,))
     myresult1 = mycursor1.fetchall()
     if  len(myresult1) != 0:
+        mycursor1.close()
         return jsonify({'return': "usernameused"})
     else:
         sqlStuff = "INSERT INTO `Manager`(`username`, `password`) VALUES (%s,%s)"
         records = [(account, password)]
         mycursor1.executemany(sqlStuff, records)
         db_connection.commit()
+        mycursor1.close()
         return jsonify({'return': "successcreate"})
 
 @app.route('/getAllGames', methods=['GET'])
@@ -67,6 +68,7 @@ def getAllGames():
     mycursor1 = db_connection.cursor()
     mycursor1.execute("Select gID,name,description From Game,Manager Where mID = owner And username=%s", (account,))
     myresult1 = mycursor1.fetchall()
+    mycursor1.close()
     if  len(myresult1) != 0:
         return jsonify({'return': myresult1})
     else:
@@ -80,6 +82,7 @@ def getAllQuestions():
     mycursor1 = db_connection.cursor()
     mycursor1.execute("Select * From Question Where gID = %s", (gameID,))
     myresult1 = mycursor1.fetchall()
+    mycursor1.close()
     if  len(myresult1) != 0:
         return jsonify({'return': myresult1})
     else:
@@ -100,6 +103,7 @@ def createGame():
     records = [(title, description, myresult1[0][0])]
     mycursor1.executemany(sqlStuff, records)
     db_connection.commit()
+    mycursor1.close()
     return jsonify({'return': 'createGameOK' })
 
 @app.route('/updateGame', methods=['PATCH'])
@@ -112,6 +116,7 @@ def updateGame():
     mycursor1 = db_connection.cursor()
     mycursor1.execute("UPDATE Game SET name = %s,description = %s WHERE gID = %s",(title,description,gameID))
     db_connection.commit()
+    mycursor1.close()
     return jsonify({'return': 'updateGameOK' })
 
 @app.route('/startGame', methods=['PATCH'])
@@ -122,6 +127,7 @@ def startGame():
     mycursor1 = db_connection.cursor()
     mycursor1.execute("UPDATE Game SET status = 1 WHERE gID = %s",(gameID,))
     db_connection.commit()
+    mycursor1.close()
     return jsonify({'return': 'startGame' })
 
 @app.route('/endGame', methods=['PATCH'])
@@ -132,6 +138,7 @@ def endGame():
     mycursor1 = db_connection.cursor()
     mycursor1.execute("UPDATE Game SET status = 0 WHERE gID = %s",(gameID,))
     db_connection.commit()
+    mycursor1.close()
     return jsonify({'return': 'endGame' })
 
 @app.route('/createQuestion', methods=['POST'])
@@ -153,7 +160,7 @@ def createQuestion():
     mycursor1.executemany(sqlStuff, records)
     db_connection.commit()
 
-    mycursor1.execute("Select qID From Question Where question = %s", (question,))
+    mycursor1.execute("Select QID From Question Where question = %s", (question,))
     myresult1 = mycursor1.fetchall()
     i=0
     for i in range(len(choice)):
@@ -161,7 +168,7 @@ def createQuestion():
         records = [(myresult1[0][0], choice[i][0], choice[i][1],)]
         mycursor1.executemany(sqlStuff, records)
         db_connection.commit()
-
+    mycursor1.close()
     return jsonify({'return': 'createQuestionOK' })
 
 @app.route('/updateQuestion', methods=['PATCH'])
@@ -177,7 +184,7 @@ def updateQuestion():
     feedback_right = insertValues['feedback_right']
     feedback_wrong = insertValues['feedback_wrong']
     mycursor1 = db_connection.cursor()
-    mycursor1.execute("UPDATE Question SET qType = %s, latitude = %s, longitude = %s, score = %s, feedback_right = %s, feedback_wrong = %s WHERE qID = %s",
+    mycursor1.execute("UPDATE Question SET qType = %s, latitude = %s, longitude = %s, score = %s, feedback_right = %s, feedback_wrong = %s WHERE QID = %s",
                       (qType, latitude, longitude, score, feedback_right, feedback_wrong, questionID,))
     db_connection.commit()
 
@@ -191,7 +198,7 @@ def updateQuestion():
             "UPDATE Choice SET content = %s, status = %s WHERE cID = %s",
             (choice[i][0], choice[i][1], myresult1[i][0],))
         db_connection.commit()
-
+    mycursor1.close()
     return jsonify({'return': 'updateQuestionOK' })
 
 @app.route('/getScore', methods=['GET'])
@@ -203,6 +210,7 @@ def getScore():
     mycursor1 = db_connection.cursor()
     mycursor1.execute("Select `score`, `rank` From Player Where gID = %s And nickname = %s", (gameID,name,))
     myresult1 = mycursor1.fetchall()
+    mycursor1.close()
     if  len(myresult1) != 0:
         return jsonify({'return': myresult1})
     else:
@@ -219,6 +227,7 @@ def joinGame():
     records = [(gameID, name,)]
     mycursor1.executemany(sqlStuff, records)
     db_connection.commit()
+    mycursor1.close()
     return "join!!"
 
 @app.route('/updateScore', methods=['PATCH'])
@@ -230,9 +239,48 @@ def updateScore():
     score = insertValues['score']
     mycursor1 = db_connection.cursor()
     mycursor1.execute("UPDATE Player SET score = %s WHERE gID = %s And nickname = %s",(score,gameID,name,))
+    # F = mycursor1.fetchall()
     db_connection.commit()
+    mycursor1.close()
+
+    mycursor2 = db_connection.cursor()
+    mycursor2.execute("SELECT `nickname` FROM Player Where gID = %s ORDER BY score DESC", (gameID,))
+    myresult2 = mycursor2.fetchall()
+    print(myresult2[0][0])
+    j=0
+    for j in range(len(myresult2)):
+        mycursor2.execute("UPDATE Player SET `rank` = %s WHERE gID = %s And nickname = %s", (j+1, gameID, myresult2[j][0],))
+        db_connection.commit()
+    mycursor2.close()
     return jsonify({'return': 'updateScoreOK' })
 
+@app.route('/getRank', methods=['GET'])
+def getRank():
+    # 取得前端傳過來的數值
+    insertValues = request.get_json()
+    gameID = insertValues['gameID']
+    mycursor1 = db_connection.cursor()
+    mycursor1.execute("SELECT `nickname`,`score`,`rank` FROM Player Where gID = %s", (gameID,))
+    myresult1 = mycursor1.fetchall()
+    mycursor1.close()
+    return jsonify({'return': myresult1 })
+
+@app.route('/getQuestion', methods=['GET'])
+def getQuestion():
+    # 取得前端傳過來的數值
+    insertValues = request.get_json()
+    questionID = insertValues['questionID']
+    mycursor1 = db_connection.cursor()
+    mycursor1.execute("SELECT `question`,`qType`,`latitude`,`longitude`,`score`,`feedback_right`,"
+                      "`feedback_wrong` FROM Question Where QID = %s", (questionID,))
+
+    myresult1 = mycursor1.fetchall()
+    mycursor2 = db_connection.cursor()
+    mycursor2.execute("SELECT `content` FROM Choice Where qID = %s AND status = 1", (questionID,))
+    myresult2 = mycursor2.fetchall()
+    mycursor1.close()
+    mycursor2.close()
+    return jsonify({'return': myresult1+myresult2 })
 
 
 
