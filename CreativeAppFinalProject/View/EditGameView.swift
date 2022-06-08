@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct EditGameView: View {
+    @State var gameID: Int32
     @State private var title = ""
     @State private var description = ""
     var body: some View {
@@ -42,7 +43,7 @@ struct EditGameView: View {
                         .frame(width: 315, height: 175)
                 }
                 
-                NavigationLink(destination: EditQuestionView(gameID: 123)) {
+                NavigationLink(destination: EditQuestionView(gameID: gameID)) {
                     Text("Ok")
                         .frame(width: 315, height: 50)
                         .font(.system(size:18))
@@ -50,7 +51,7 @@ struct EditGameView: View {
                         .border(/*@START_MENU_TOKEN@*/Color.white/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/3/*@END_MENU_TOKEN@*/)
                         .cornerRadius(8)
                 }
-                NavigationLink(destination: EditQuestionView(gameID: 123)) {
+                NavigationLink(destination: EditQuestionView(gameID: gameID)) {
                     Text("Back")
                         .frame(width: 315, height: 50)
                         .font(.system(size:18))
@@ -68,6 +69,6 @@ struct EditGameView: View {
 
 struct EditGameView_Previews: PreviewProvider {
     static var previews: some View {
-        EditGameView()
+        EditGameView(gameID: 123)
     }
 }
