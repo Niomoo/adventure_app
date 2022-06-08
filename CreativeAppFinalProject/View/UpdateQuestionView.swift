@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct UpdateQuestionView: View {
+    @State var gameID:Int32
     @State var question = ""
     @State var choice1 = ""
     @State var choice2 = ""
@@ -113,7 +114,7 @@ struct UpdateQuestionView: View {
                     .background(Color(UIColor(red: 0.839, green: 0.89, blue: 0.886, alpha: 1).cgColor))
                     .cornerRadius(8)
                     .frame(width: 315, height: 50)
-                NavigationLink(destination: EditQuestionView(gameID: 123)) {
+                NavigationLink(destination: EditQuestionView(gameID: gameID)) {
                     Text("Edit")
                         .frame(width: 315, height: 50)
                         .font(.system(size:18))
@@ -132,6 +133,6 @@ struct UpdateQuestionView: View {
 
 struct UpdateQuestionView_Previews: PreviewProvider {
     static var previews: some View {
-        UpdateQuestionView()
+        UpdateQuestionView(gameID: 123)
     }
 }

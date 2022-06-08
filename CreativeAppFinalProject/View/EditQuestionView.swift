@@ -39,7 +39,7 @@ struct EditQuestionView: View {
                     .underline(color: Color.init(hex:"#69A1AC"))
                     .frame(width:315, alignment: .leading)
                 List(allQuestions) { element in
-                    NavigationLink(destination: UpdateQuestionView()) {
+                    NavigationLink(destination: UpdateQuestionView(gameID:gameID)) {
                         Text("\(element.question)")
                     }
                 }
@@ -55,7 +55,7 @@ struct EditQuestionView: View {
                             .frame(width: 55, height: 55)
                     )
                     .frame(width:115, alignment: .leading)
-                    NavigationLink(destination: NewQuestionView()) {
+                    NavigationLink(destination: NewQuestionView(gameID: gameID)) {
                         Text("＋")
                     }
                     .font(.system(size:42))
@@ -65,7 +65,7 @@ struct EditQuestionView: View {
                             .fill(Color.init(hex:"#69A1AC"))
                             .frame(width: 55, height: 55)
                     )
-                    NavigationLink(destination: EditGameView()) {
+                    NavigationLink(destination: EditGameView(gameID: gameID)) {
                         Text("✎")
                     }
                     .font(.system(size:36))
