@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EditQuestionView: View {
     @State var title = "踏溯高雄"
+    @State var account: String
     @State var gameID: Int32
     @State var description = "臺灣南方最繁華的國際城市——高雄市，為2009年世界運動會主辦城市，因受海洋氣候調節，全年陽光普照、氣候宜人，有獨特的「海洋首都」特性。近年來大力推展觀光事業，已成為全臺最美麗的城市之一。"
     @State var state = false
@@ -39,12 +40,12 @@ struct EditQuestionView: View {
                     .underline(color: Color.init(hex:"#69A1AC"))
                     .frame(width:315, alignment: .leading)
                 List(allQuestions) { element in
-                    NavigationLink(destination: UpdateQuestionView(gameID:gameID)) {
+                    NavigationLink(destination: UpdateQuestionView(account: account, gameID:gameID)) {
                         Text("\(element.question)")
                     }
                 }
                 HStack(spacing:50) {
-                    NavigationLink(destination: DashboardView()) {
+                    NavigationLink(destination: DashboardView(account: account)) {
                         Text("←")
                     }
                     .font(.system(size:42))
@@ -55,7 +56,7 @@ struct EditQuestionView: View {
                             .frame(width: 55, height: 55)
                     )
                     .frame(width:115, alignment: .leading)
-                    NavigationLink(destination: NewQuestionView(gameID: gameID)) {
+                    NavigationLink(destination: NewQuestionView(account: account, gameID: gameID)) {
                         Text("＋")
                     }
                     .font(.system(size:42))
@@ -65,7 +66,7 @@ struct EditQuestionView: View {
                             .fill(Color.init(hex:"#69A1AC"))
                             .frame(width: 55, height: 55)
                     )
-                    NavigationLink(destination: EditGameView(gameID: gameID)) {
+                    NavigationLink(destination: EditGameView(account: account, gameID: gameID)) {
                         Text("✎")
                     }
                     .font(.system(size:36))
@@ -85,6 +86,6 @@ struct EditQuestionView: View {
 
 struct EditQuestionView_Previews: PreviewProvider {
     static var previews: some View {
-        EditQuestionView(gameID: 123)
+        EditQuestionView(account: "abc", gameID: 123)
     }
 }

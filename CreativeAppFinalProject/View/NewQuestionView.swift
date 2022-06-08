@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NewQuestionView: View {
+    @State var account: String
     @State var gameID: Int32
     @State var question = ""
     @State var choice1 = ""
@@ -114,7 +115,7 @@ struct NewQuestionView: View {
                     .background(Color(UIColor(red: 0.839, green: 0.89, blue: 0.886, alpha: 1).cgColor))
                     .cornerRadius(8)
                     .frame(width: 315, height: 50)
-                NavigationLink(destination: EditQuestionView(gameID: gameID)) {
+                NavigationLink(destination: EditQuestionView(account:account, gameID: gameID)) {
                     Text("Create")
                         .frame(width: 315, height: 50)
                         .font(.system(size:18))
@@ -133,6 +134,6 @@ struct NewQuestionView: View {
 
 struct NewQuestionView_Previews: PreviewProvider {
     static var previews: some View {
-        NewQuestionView(gameID: 123)
+        NewQuestionView(account: "abc", gameID: 123)
     }
 }

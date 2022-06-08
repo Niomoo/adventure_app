@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CreatingGameView: View {
+    @State var account:String
     @State private var title = ""
     @State private var description = ""
     var body: some View {
@@ -42,7 +43,7 @@ struct CreatingGameView: View {
                         .frame(width: 315, height: 175)
                 }
                 
-                NavigationLink(destination: PublishedGameView()) {
+                NavigationLink(destination: PublishedGameView(account: account)) {
                     Text("Ok")
                         .frame(width: 315, height: 50)
                         .font(.system(size:18))
@@ -50,7 +51,7 @@ struct CreatingGameView: View {
                         .border(/*@START_MENU_TOKEN@*/Color.white/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/3/*@END_MENU_TOKEN@*/)
                         .cornerRadius(8)
                 }
-                NavigationLink(destination: DashboardView()) {
+                NavigationLink(destination: DashboardView(account: account)) {
                     Text("Back")
                         .frame(width: 315, height: 50)
                         .font(.system(size:18))
@@ -68,6 +69,6 @@ struct CreatingGameView: View {
 
 struct CreatingGameView_Previews: PreviewProvider {
     static var previews: some View {
-        CreatingGameView()
+        CreatingGameView(account: "abc")
     }
 }

@@ -14,6 +14,7 @@ var allQuestions = [
 ]
 
 struct CheckView: View {
+    @State var account:String
     @State var title = "踏溯高雄"
     @State var rID = "GA0001"
     @State var description = "Pellentesque ut tellus luctus, fermentum justo quis, lobortis mi. Praesent volutpat odio non neque iaculis condimentum. Aenean arcu leo, sollicitudin vel pulvinar vel, fermentum ut dolor."
@@ -40,7 +41,7 @@ struct CheckView: View {
                     Text("\(element.question)")
                 }
                 HStack(spacing:50) {
-                    NavigationLink(destination: DashboardView()) {
+                    NavigationLink(destination: DashboardView(account: account)) {
                         Text("←")
                     }
                     .font(.system(size:42))
@@ -61,6 +62,6 @@ struct CheckView: View {
 
 struct CheckView_Previews: PreviewProvider {
     static var previews: some View {
-        CheckView()
+        CheckView(account: "abc")
     }
 }

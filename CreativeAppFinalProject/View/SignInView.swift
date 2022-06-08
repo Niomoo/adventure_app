@@ -56,7 +56,7 @@ struct SignInView: View {
                         .frame(width: 315, height: 50)
                 }
                 
-                NavigationLink(destination: DashboardView().onAppear {
+                NavigationLink(destination: DashboardView(account: account).onAppear {
                     self.loginAccount(account: account, password: password)
                 }) {
                     Text("Sign In")

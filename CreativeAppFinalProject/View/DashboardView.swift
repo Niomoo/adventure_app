@@ -6,14 +6,6 @@
 //
 
 import SwiftUI
-
-struct game:Identifiable {
-    var id: Int32
-    var title: String
-    var description: String
-    var status: Bool
-}
-
 var allGames = [
     game(id:1, title:"Game 1", description:"Game1 Description", status: false),
     game(id:2, title:"Game 2", description:"Game2 Description", status: false),
@@ -21,8 +13,22 @@ var allGames = [
     game(id:4, title:"Game 4", description:"Game4 Description", status: false),
     game(id:5, title:"Game 5", description:"Game5 Description", status: false)
 ]
+struct game:Identifiable {
+    var id: Int32
+    var title: String
+    var description: String
+    var status: Bool
+}
+
+//struct getAllGames: APIRequest {
+//    typealias Response = GameList
+//    var manager: String?
+//    var path: String { "/getAllGames/" }
+//    var queryItems: [URLQueryItem]? { [URLQueryItem(name: "account", value: manager)] }
+//}
 
 struct DashboardView: View {
+    @State var account: String
     var body: some View {
         NavigationView{
             VStack(spacing:15){
@@ -32,7 +38,7 @@ struct DashboardView: View {
                 .padding()
                 .foregroundColor(.black)
                 .frame(width:315, alignment: .trailing)
-                Text("Welcome " + "!")
+                Text("Welcome \(account)" + "!")
                     .font(.system(size:24))
                     .font(.largeTitle)
                     .bold()
@@ -42,11 +48,11 @@ struct DashboardView: View {
                     .underline(color: Color.init(hex:"#69A1AC"))
                     .frame(width:315, alignment: .leading)
                     List(allGames) { game in
-                        NavigationLink(destination: EditQuestionView(gameID: game.id)) {
+                        NavigationLink(destination: EditQuestionView(account: account, gameID: game.id)) {
                             Text("\(game.title)")
                         }
                     }
-                NavigationLink(destination: CreatingGameView()) {
+                NavigationLink(destination: CreatingGameView(account: account)) {
                     Text("＋")
                 }
                 .font(.system(size:42))
@@ -66,6 +72,6 @@ struct DashboardView: View {
 
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
-        DashboardView()
+        DashboardView(account: "abc")
     }
 }
