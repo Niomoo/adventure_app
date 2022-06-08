@@ -11,13 +11,13 @@ import MapKit
 struct StartGameView: View {
     @State var ExitButtonState = false
     @State var RankButtonState = false
-    @State var region: MKCoordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 40.75773, longitude: -73.985708), span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+    @State var region: MKCoordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 22.61, longitude: 120.27), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
     @Binding var PlayerName : String
     var Rid : String
     var pointsOfInterest = [
-        AnnotatedItem(name: "Times Square", coordinate: .init(latitude: 40.75773, longitude: -73.985708),ques: 0),
-        AnnotatedItem(name: "Flatiron Building", coordinate: .init(latitude: 40.741112, longitude: -73.989723),ques: 1),
-        AnnotatedItem(name: "Empire State Building", coordinate: .init(latitude: 40.748817, longitude: -73.985428),ques: 2)
+        AnnotatedItem(name: "Times Square", coordinate: .init(latitude: Double(Question[0].latitude) ?? 0, longitude: Double(Question[0].longitude) ?? 0),ques: 0),
+        AnnotatedItem(name: "Flatiron Building", coordinate: .init(latitude: Double(Question[1].latitude) ?? 0, longitude: Double(Question[1].longitude) ?? 0),ques: 1),
+        AnnotatedItem(name: "Empire State Building", coordinate: .init(latitude: Double(Question[2].latitude) ?? 0, longitude: Double(Question[2].longitude) ?? 0),ques: 2)
         ]
     
     var body: some View {
@@ -26,7 +26,7 @@ struct StartGameView: View {
             
             VStack{
                 VStack(alignment:.leading){
-                    Text("踏碩台南\(Rid)")
+                    Text("踏溯高雄")
                         .font(.system(size: 40))
                         .fontWeight(.bold)
                         .foregroundColor(.black)

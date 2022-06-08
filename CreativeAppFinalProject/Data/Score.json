@@ -1,22 +1,22 @@
 [
     {
     "id":"ABC",
-    "score": "20",
-    "rank": "3"
+    "score": "0",
+    "rank": "99"
     },
     {
     "id":"BCD",
-    "score":"30",
-    "rank":"1"
+    "score":"0",
+    "rank":"99"
      },
      {
      "id":"CDE",
-    "score":"25",
-    "rank":"2"
+    "score":"0",
+    "rank":"99"
      },
      {
      "id":"DEF",
-    "score":"15",
-    "rank":"4"
+    "score":"0",
+    "rank":"99"
      }
 ]

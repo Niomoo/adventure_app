@@ -19,7 +19,7 @@ struct AnswerView: View {
             VStack(alignment: .center, spacing: 15){
                 let Options=Choice[QuesIndex].oneQuesChoice
                 VStack(alignment: .leading){
-                    Text("踏溯台南")
+                    Text("踏溯高雄")
                         .font(.system(size: 40))
                         .fontWeight(.bold)
                         .foregroundColor(.white)
@@ -102,6 +102,7 @@ struct AnswerView: View {
                     RankButtonState.toggle()
                 },label: {
                     Text("Ranking")
+                        .font(.system(size: 18,weight: .bold))
                         .foregroundColor(.white)
                         .overlay(
                             RoundedRectangle(cornerRadius: 10)
@@ -117,6 +118,7 @@ struct AnswerView: View {
                     StartGameView(PlayerName: $pName, Rid: Rid)
                 }label: {
                     Text("Back")
+                        .font(.system(size: 18,weight: .bold))
                         .foregroundColor(.white)
                         .frame(width: 300, height: 50)
                         .font(.title)
@@ -131,7 +133,6 @@ struct AnswerView: View {
 struct AnswerView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            AnswerView(Rid: "123", pName:.constant("abc"),opt: .constant(1))
             AnswerView(Rid: "123", pName:.constant("abc"),opt: .constant(1))
         }
     }

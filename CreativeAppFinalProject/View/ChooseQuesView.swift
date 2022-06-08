@@ -60,6 +60,7 @@ struct ChooseQuesView: View {
                     }
                 }label: {
                     Text("Submit")
+                        .font(.system(size: 18,weight: .bold))
                         .foregroundColor(.white)
                         .overlay(
                             RoundedRectangle(cornerRadius: 10)
@@ -87,6 +88,7 @@ struct ChooseQuesView: View {
                     StartGameView(PlayerName: $pName, Rid: Rid)
                 }label: {
                     Text("Back")
+                        .font(.system(size: 18,weight: .bold))
                         .foregroundColor(.white)
                         .frame(width: 300, height: 50)
                         .font(.title)
