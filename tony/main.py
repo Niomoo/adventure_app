@@ -2,6 +2,7 @@ import numpy as np
 import mysql.connector as mysql
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import json
 
 # enter your server IP address/domain name
 HOST = "remotemysql.com" # or "domain.com"
@@ -34,11 +35,11 @@ def login():
     mycursor.execute("Select mID From Manager Where username = %s And password = %s", (account,password))
 
     myresult = mycursor.fetchall()
-
-    for x in myresult:
-        print(x)
+    value = {
+        "account":myresult[0][0]
+    }
     mycursor.close()
-    return jsonify({'return': myresult })
+    return json.dumps(value)
 
 @app.route('/createAccount', methods=['POST'])
 def createAccount():
@@ -68,7 +69,7 @@ def getAllGames():
     myresult1 = mycursor1.fetchall()
     mycursor1.close()
     if  len(myresult1) != 0:
-        return jsonify({'return': myresult1})
+        return myresult1
     else:
         return "NOGAME"
 
@@ -81,7 +82,7 @@ def getAllQuestions():
     myresult1 = mycursor1.fetchall()
     mycursor1.close()
     if  len(myresult1) != 0:
-        return jsonify({'return': myresult1})
+        return myresult1
     else:
         return "NOQuestion"
 
@@ -208,7 +209,7 @@ def getScore():
     myresult1 = mycursor1.fetchall()
     mycursor1.close()
     if  len(myresult1) != 0:
-        return jsonify({'return': myresult1})
+        return myresult1
     else:
         return "NOPlayer"
 
@@ -258,7 +259,7 @@ def getRank():
     mycursor1.execute("SELECT `nickname`,`score`,`rank` FROM Player Where gID = %s", (gameID,))
     myresult1 = mycursor1.fetchall()
     mycursor1.close()
-    return jsonify({'return': myresult1 })
+    return myresult1
 
 @app.route('/getQuestion/', methods=['GET'])
 def getQuestion():
@@ -274,7 +275,7 @@ def getQuestion():
     myresult2 = mycursor2.fetchall()
     mycursor1.close()
     mycursor2.close()
-    return jsonify({'return': myresult1+myresult2 })
+    return myresult1+myresult2
 
 
 
