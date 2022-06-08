@@ -66,8 +66,8 @@ extension APIRequest {
 
 extension APIRequest where Response: Decodable {
     func send(completion: @escaping (Result<Response, Error>) -> Void) {
-        URLSession.shared.dataTask(with: request){
-            data, _, error in do {
+        URLSession.shared.dataTask(with: request){ data, _, error in
+            do {
                 if let data = data {
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -85,8 +85,8 @@ extension APIRequest where Response: Decodable {
 
 extension APIRequest {
     func send(completion: @escaping (Error?) -> Void) {
-        URLSession.shared.dataTask(with: request) {
-            _, _, error in completion(error)
+        URLSession.shared.dataTask(with: request) { _, _, error in
+            completion(error)
         }.resume()
     }
 }

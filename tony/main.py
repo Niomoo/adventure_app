@@ -12,8 +12,9 @@ DATABASE = "Gt3eUb4zq1"
 USER = "Gt3eUb4zq1"
 # user password
 PASSWORD = "wQ76pgmCix"
+PORT = 3306
 # connect to MySQL server
-db_connection = mysql.connect(host=HOST, database=DATABASE, user=USER, password=PASSWORD)
+db_connection = mysql.connect(host=HOST, port=PORT, database=DATABASE, user=USER, password=PASSWORD)
 print("Connected to:", db_connection.get_server_info())
 # enter your code here!
 
@@ -35,9 +36,8 @@ def login():
     mycursor.execute("Select mID From Manager Where username = %s And password = %s", (account,password))
 
     myresult = mycursor.fetchall()
-    value = {
-        "account":myresult[0][0]
-    }
+    value = {}
+    value['account'] = str(myresult[0][0])
     mycursor.close()
     return json.dumps(value)
 
@@ -63,23 +63,30 @@ def createAccount():
 
 @app.route('/getAllGames/', methods=['GET'])
 def getAllGames():
-    account=request.values.get('account')
+    account=request.args.get('account')
     mycursor1 = db_connection.cursor()
     mycursor1.execute("Select gID,name,description,status From Game,Manager Where mID = owner And username=%s", (account,))
     myresult1 = mycursor1.fetchall()
     mycursor1.close()
+    value = {}
+    # value['gameID'] = myresult1[0][0]
+    # value['title'] = myresult1[0][1]
+    # value['description'] = myresult1[0][2]
+    # value['status'] = myresult1[0][3]
+    # return json.dumps(value, ensure_ascii=False)
     if  len(myresult1) != 0:
-        value=[]
         i = 0
+        games = []
         for i in range(len(myresult1)):
             user = {}
-            user['gameID'] = myresult1[i][0]
+            user['gameID'] = str(myresult1[i][0])
             user['title'] = myresult1[i][1]
             user['description'] = myresult1[i][2]
-            user['status'] = myresult1[i][3]
-            value.append(user)
+            user['status'] = str(myresult1[i][3])
+            games.append(user)
+        value['games'] = games
         # data['users'] = users
-        return json.dumps(value,ensure_ascii=False)
+        return json.dumps(value, ensure_ascii=False)
     else:
         return "NOGAME"
 
@@ -94,14 +101,14 @@ def getAllQuestions():
 
     mycursor1.close()
     if  len(myresult1) != 0:
-        # value = []
-        # i = 0
-        # for i in range(len(myresult1)):
-        #     user = {}
-        #     user['gameID'] = myresult1[i][0]
-        #     user['title'] = myresult1[i][1]
-        #     user['description'] = myresult1[i][2]
-        #     user['status'] = myresult1[i][3]
+        value = []
+        i = 0
+        for i in range(len(myresult1)):
+            user = {}
+            user['gameID'] = myresult1[i][0]
+            user['title'] = myresult1[i][1]
+            user['description'] = myresult1[i][2]
+            user['status'] = myresult1[i][3]
         #     "questionID": myresult[0][0],
         #     "question": myresult[0][1],
         #     "type": myresult[0][2],
@@ -112,8 +119,8 @@ def getAllQuestions():
         #     "feedback_right": myresult[0][0],
         #     "feedback_wrong": myresult[0][0]
         #     value.append(user)
-        # # data['users'] = users
-        # return json.dumps(value, ensure_ascii=False)
+        #     data['users'] = users
+        return json.dumps(value, ensure_ascii=False)
     else:
         return "NOQuestion"
 

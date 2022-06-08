@@ -83,7 +83,12 @@ struct SignInView: View {
     func loginAccount(account: String, password: String){
         let account = Account(account: account, password: password)
         login(loginAccount: account).send { result in
-            print(result)
+            switch result {
+            case .success(let manager):
+                print(manager)
+            case .failure(let error):
+                print(error)
+            }
         }
     }
 }

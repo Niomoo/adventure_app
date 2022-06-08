@@ -39,6 +39,7 @@
 		CEFF9DD2284FBACA0012EFF8 /* APIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF9DD1284FBACA0012EFF8 /* APIData.swift */; };
 		CEFF9DD4284FBEC40012EFF8 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF9DD3284FBEC40012EFF8 /* APIService.swift */; };
 		CEFF9DD62850EAC70012EFF8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF9DD52850EAC70012EFF8 /* ViewController.swift */; };
+		CEFF9DD828514AD80012EFF8 /* NetworkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF9DD728514AD80012EFF8 /* NetworkController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		CEFF9DD1284FBACA0012EFF8 /* APIData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIData.swift; sourceTree = "<group>"; };
 		CEFF9DD3284FBEC40012EFF8 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		CEFF9DD52850EAC70012EFF8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CEFF9DD728514AD80012EFF8 /* NetworkController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 				4CBC5A45284C4CC50027305C /* Data.swift */,
 				CEFF9DCF284F73010012EFF8 /* APIRequest.swift */,
 				CEFF9DD52850EAC70012EFF8 /* ViewController.swift */,
+				CEFF9DD728514AD80012EFF8 /* NetworkController.swift */,
 				CEFF9DD1284FBACA0012EFF8 /* APIData.swift */,
 				CEFF9DD3284FBEC40012EFF8 /* APIService.swift */,
 			);
@@ -285,6 +288,7 @@
 				2CFF9A87284F7FAB00EAD54A /* CheckView.swift in Sources */,
 				2CFF9A86284F7FAB00EAD54A /* EditGameView.swift in Sources */,
 				4CBC5A3B284A72AB0027305C /* ChooseQuesView.swift in Sources */,
+				CEFF9DD828514AD80012EFF8 /* NetworkController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
