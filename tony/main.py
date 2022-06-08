@@ -276,7 +276,7 @@ def getQuestion():
 
     myresult1 = mycursor1.fetchall()
     mycursor2 = db_connection.cursor()
-    mycursor2.execute("SELECT `content` FROM Choice Where qID = %s AND status = 1", (questionID,))
+    mycursor2.execute("SELECT `content`,`status` FROM Choice Where qID = %s ", (questionID,))
     myresult2 = mycursor2.fetchall()
     mycursor1.close()
     mycursor2.close()
