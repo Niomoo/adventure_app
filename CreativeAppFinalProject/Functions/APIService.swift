@@ -46,7 +46,7 @@ struct getAllQuestions: APIRequest {
 struct createGame: APIRequest {
     typealias Response = Void
     var game: ManageGame
-    var path: String { "/createGame/" }
+    var path: String { "/createGame" }
     var httpMethod: HTTPMethod { .POST }
     var httpBody: Data? {
         let encoder = JSONEncoder()
@@ -57,7 +57,7 @@ struct createGame: APIRequest {
 struct updateGame: APIRequest {
     typealias Response = Void
     var game: ManageGame
-    var path: String { "/updateGame/" }
+    var path: String { "/updateGame" }
     var httpMethod: HTTPMethod { .PATCH }
     var httpBody: Data? {
         let encoder = JSONEncoder()
@@ -68,7 +68,7 @@ struct updateGame: APIRequest {
 struct startGame: APIRequest {
     typealias Response = Void
     var gameID: String
-    var path: String { "/startGame/" }
+    var path: String { "/startGame" }
     var httpMethod: HTTPMethod { .PATCH }
     var httpBody: Data? {
         let encoder = JSONEncoder()
@@ -79,7 +79,7 @@ struct startGame: APIRequest {
 struct endGame: APIRequest {
     typealias Response = Void
     var gameID: String
-    var path: String { "/endGame/" }
+    var path: String { "/endGame" }
     var httpMethod: HTTPMethod { .PATCH }
     var httpBody: Data? {
         let encoder = JSONEncoder()
@@ -90,7 +90,7 @@ struct endGame: APIRequest {
 struct createQuestion: APIRequest {
     typealias Response = Void
     var question: ManageQuestion
-    var path: String { "/createQuestion/" }
+    var path: String { "/createQuestion" }
     var httpMethod: HTTPMethod { .POST }
     var httpBody: Data? {
         let encoder = JSONEncoder()
@@ -100,8 +100,8 @@ struct createQuestion: APIRequest {
 
 struct updateQuestion: APIRequest {
     typealias Response = Void
-    var question: Question
-    var path: String { "/updateQuestion/" }
+    var question: QuestionA
+    var path: String { "/updateQuestion" }
     var httpMethod: HTTPMethod { .PATCH }
     var httpBody: Data? {
         let encoder = JSONEncoder()
@@ -119,8 +119,8 @@ struct getScore: APIRequest {
 struct joinGame: APIRequest {
     typealias Response = Void
     var player: NewPlayer
-    var path: String { "/joinGame/" }
-    var httpMethod: HTTPMethod { .PATCH }
+    var path: String { "/joinGame" }
+    var httpMethod: HTTPMethod { .POST }
     var httpBody: Data? {
         let encoder = JSONEncoder()
         return try? encoder.encode(player)
@@ -130,7 +130,7 @@ struct joinGame: APIRequest {
 struct updateScore: APIRequest {
     typealias Response = Void
     var newScore: NewScore
-    var path: String { "/updateScore/" }
+    var path: String { "/updateScore" }
     var httpMethod: HTTPMethod { .PATCH }
     var httpBody: Data? {
         let encoder = JSONEncoder()
@@ -146,7 +146,7 @@ struct getRank: APIRequest {
 }
 
 struct getQuestion: APIRequest {
-    typealias Response = Question
+    typealias Response = QuestionA
     var questionID: String?
     var path: String { "/getQuestion/" }
     var queryItems: [URLQueryItem]? { [URLQueryItem(name: "questionID", value: questionID)]}

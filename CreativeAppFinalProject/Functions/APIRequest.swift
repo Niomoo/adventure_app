@@ -69,7 +69,9 @@ extension APIRequest where Response: Decodable {
         URLSession.shared.dataTask(with: request){
             data, _, error in do {
                 if let data = data {
-                    let decoded = try JSONDecoder().decode(Response.self, from: data)
+                    let decoder = JSONDecoder()
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    let decoded = try decoder.decode(Response.self, from: data)
                     completion(.success(decoded))
                 } else if let error = error {
                     completion(.failure(error))

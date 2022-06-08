@@ -15,7 +15,7 @@ struct Player {
 extension Player: Codable { }
 
 struct NewPlayer {
-    let gameID: Int
+    let gameID: String
     let name: String
 }
 extension NewPlayer: Codable { }
@@ -46,24 +46,24 @@ struct ManageGame {
 }
 extension ManageGame: Codable { }
 
-struct Choice {
+struct ChoiceA {
     let text: String
     let answer: Int
 }
-extension Choice: Codable { }
+extension ChoiceA: Codable { }
 
-struct Question {
+struct QuestionA {
     let questionID: Int
     let question: String
     let qType: Int
     let latitude: String
     let longitude: String
     let score: Int
-    let choice: [Choice]
+    let choice: [ChoiceA]
     let feedback_right: String
     let feedback_wrong: String
 }
-extension Question: Codable { }
+extension QuestionA: Codable { }
 
 struct ManageQuestion {
     let gameID: Int
@@ -72,7 +72,7 @@ struct ManageQuestion {
     let latitude: String
     let longitude: String
     let score: Int
-    let choice: [Choice]
+    let choice: [ChoiceA]
     let feedback_right: String
     let feedback_wrong: String
 }
@@ -84,7 +84,7 @@ struct GameList {
 extension GameList: Codable { }
 
 struct QuestionList {
-    let questions: [Question]
+    let questions: [QuestionA]
 }
 extension QuestionList: Codable { }
 

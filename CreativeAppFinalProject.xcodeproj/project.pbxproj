@@ -38,6 +38,7 @@
 		CEFF9DD0284F73010012EFF8 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF9DCF284F73010012EFF8 /* APIRequest.swift */; };
 		CEFF9DD2284FBACA0012EFF8 /* APIData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF9DD1284FBACA0012EFF8 /* APIData.swift */; };
 		CEFF9DD4284FBEC40012EFF8 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF9DD3284FBEC40012EFF8 /* APIService.swift */; };
+		CEFF9DD62850EAC70012EFF8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFF9DD52850EAC70012EFF8 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		CEFF9DCF284F73010012EFF8 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		CEFF9DD1284FBACA0012EFF8 /* APIData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIData.swift; sourceTree = "<group>"; };
 		CEFF9DD3284FBEC40012EFF8 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		CEFF9DD52850EAC70012EFF8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 				4CBC5A3D284A8B3F0027305C /* colorSetting.swift */,
 				4CBC5A45284C4CC50027305C /* Data.swift */,
 				CEFF9DCF284F73010012EFF8 /* APIRequest.swift */,
+				CEFF9DD52850EAC70012EFF8 /* ViewController.swift */,
 				CEFF9DD1284FBACA0012EFF8 /* APIData.swift */,
 				CEFF9DD3284FBEC40012EFF8 /* APIService.swift */,
 			);
@@ -256,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CEFF9DD62850EAC70012EFF8 /* ViewController.swift in Sources */,
 				2CFF9A83284F7FAB00EAD54A /* SignUpFormView.swift in Sources */,
 				4CBC5A4B284C51840027305C /* rankBarView.swift in Sources */,
 				4CBC5A4F284C61770027305C /* questionBarView.swift in Sources */,
@@ -409,7 +413,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CreativeAppFinalProject/Preview Content\"";
-				DEVELOPMENT_TEAM = 8G3HFT6JD7;
+				DEVELOPMENT_TEAM = F393US2T48;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CreativeAppFinalProject/Info.plist;
@@ -439,7 +443,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CreativeAppFinalProject/Preview Content\"";
-				DEVELOPMENT_TEAM = 8G3HFT6JD7;
+				DEVELOPMENT_TEAM = F393US2T48;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CreativeAppFinalProject/Info.plist;

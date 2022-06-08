@@ -30,7 +30,9 @@ struct EnterName: View {
                             .stroke(Color.white,lineWidth: 3))
                 }
                 VStack{
-                    NavigationLink(destination:StartGameView(PlayerName:$nickName,Rid: roomID)){
+                    NavigationLink(destination:StartGameView(PlayerName:$nickName,Rid: roomID).onAppear {
+                        self.joinRoom(roomID: roomID, nickName: nickName)
+                    }){
                         Text("Start")
                             .foregroundColor(.white)
                             .frame(width: 300, height: 50)
@@ -57,6 +59,12 @@ struct EnterName: View {
         }
         .navigationBarTitle("")
         .navigationBarHidden(true)
+    }
+    func joinRoom(roomID: String, nickName: String){
+        let player = NewPlayer(gameID: roomID, name: nickName)
+        joinGame(player: player).send { result in
+            print(result)
+        }
     }
 }
 
