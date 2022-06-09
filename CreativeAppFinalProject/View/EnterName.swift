@@ -9,7 +9,6 @@ import SwiftUI
 
 struct EnterName: View {
     @State var nickName = ""
-    //@State var Question = QuestionList(questions: [])
     @Binding var roomID: String
     var body: some View {
         

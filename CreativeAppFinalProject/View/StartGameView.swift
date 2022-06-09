@@ -11,7 +11,6 @@ import MapKit
 struct StartGameView: View {
     @State var ExitButtonState = false
     @State var RankButtonState = false
-    @State var Rank:RankList = RankList(players: [])
     @State var region: MKCoordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 22.61, longitude: 120.27), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
     @Binding var PlayerName : String
     var Rid : String
@@ -42,7 +41,7 @@ struct StartGameView: View {
                         item in MapAnnotation(coordinate: item.coordinate)
                         {
                             NavigationLink {
-                                ChooseQuesView(QuesIndex:item.ques, Rid: Rid,pName: $PlayerName, Rank: $Rank, opt: 0)
+                                ChooseQuesView(QuesIndex:item.ques, Rid: Rid,pName: $PlayerName, opt: 0)
                                         } label: {
                                             Circle()
                                                 .stroke(.red, lineWidth: 3)
@@ -87,9 +86,7 @@ struct StartGameView: View {
                                     .foregroundColor(.white)
                                     .font(.system(size: 20, weight: .bold))
                                     .sheet(isPresented: $RankButtonState){
-                                        RankView(RankIn:$Rank).onAppear(){
-                                            self.requestRank(gameID: Rid)
-                                        }
+                                    RankView()
                                 }
                             )
                     
@@ -100,8 +97,8 @@ struct StartGameView: View {
 //                    .padding()
                     
                     }
-                    let currentScore = getDat(PlayerName: PlayerName,Rank: Rank)[0]
-                    let currentRank = getDat(PlayerName: PlayerName,Rank: Rank)[1]
+                    let currentScore = getDat(PlayerName: PlayerName)[0]
+                    let currentRank = getDat(PlayerName: PlayerName)[1]
                     VStack{
                         
                         Text("目前排名：\(currentRank)")

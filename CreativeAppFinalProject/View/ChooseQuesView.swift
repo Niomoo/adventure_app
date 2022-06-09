@@ -12,7 +12,6 @@ struct ChooseQuesView: View {
     @State private var optionButton = [false,false]
     @State private var submitButton = false
     @Binding var pName:String
-    @Binding var Rank:RankList
     @State var opt:Int
 
     var body: some View {
@@ -56,11 +55,9 @@ struct ChooseQuesView: View {
                 Spacer()
                 NavigationLink{
                     if(Choice[QuesIndex].oneQuesChoice[opt].status==1){
-                        AnswerView(QuesIndex: QuesIndex, Rid: Rid,pName: $pName,opt: $opt,Rank: $Rank, correct: true).onAppear(){
-                            self.sendScore(gameID: Int(Rid) ?? 0, name: pName, score: updatescore(PlayerName: pName, AddScore: Question[QuesIndex].score, Rank: Rank))
-                        }
+                        AnswerView(QuesIndex: QuesIndex, Rid: Rid,pName: $pName,opt: $opt,correct: true)
                     }else{
-                        AnswerView(QuesIndex: QuesIndex, Rid: Rid,pName: $pName,opt: $opt, Rank: $Rank).onAppear(){ self.sendScore(gameID: Int(Rid) ?? 0, name: pName, score: updatescore(PlayerName: pName, AddScore: "0", Rank: Rank))}
+                        AnswerView(QuesIndex: QuesIndex, Rid: Rid,pName: $pName,opt: $opt)
                     }
                 }label: {
                     Text("Submit")
@@ -102,18 +99,12 @@ struct ChooseQuesView: View {
             .background(Color.init(hex: "#69A1AC"))
         }
         .hiddenNavigationBarStyle()
-    }
-    func sendScore(gameID:Int,name:String,score:Int){
-        let score = NewScore(gameID: gameID, name: name, score: score)
-        updateScore(newScore: score).send{
-            result in
-            print()
-        }
+        
     }
 }
 
-//struct ChooseQuesView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ChooseQuesView(QuesIndex: 1, Rid: "123",pName: .constant("p1"),opt: 0)
-//    }
-//}
+struct ChooseQuesView_Previews: PreviewProvider {
+    static var previews: some View {
+        ChooseQuesView(QuesIndex: 1, Rid: "123",pName: .constant("p1"),opt: 0)
+    }
+}
