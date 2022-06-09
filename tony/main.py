@@ -350,7 +350,9 @@ def getQuestion():
         value.append(user)
         mycursor2.close()
         return json.dumps(value, ensure_ascii=False)
-    return myresult1+myresult2
+    else:
+        return "NOquestion"
+
 
 
 
