@@ -12,9 +12,8 @@ DATABASE = "Gt3eUb4zq1"
 USER = "Gt3eUb4zq1"
 # user password
 PASSWORD = "wQ76pgmCix"
-PORT = 3306
 # connect to MySQL server
-db_connection = mysql.connect(host=HOST, port=PORT, database=DATABASE, user=USER, password=PASSWORD)
+db_connection = mysql.connect(host=HOST, database=DATABASE, user=USER, password=PASSWORD)
 print("Connected to:", db_connection.get_server_info())
 # enter your code here!
 
@@ -36,8 +35,9 @@ def login():
     mycursor.execute("Select mID From Manager Where username = %s And password = %s", (account,password))
 
     myresult = mycursor.fetchall()
-    value = {}
-    value['account'] = str(myresult[0][0])
+    value = {
+        "account":myresult[0][0]
+    }
     mycursor.close()
     return json.dumps(value)
 
@@ -63,30 +63,23 @@ def createAccount():
 
 @app.route('/getAllGames/', methods=['GET'])
 def getAllGames():
-    account=request.args.get('account')
+    account=request.values.get('account')
     mycursor1 = db_connection.cursor()
     mycursor1.execute("Select gID,name,description,status From Game,Manager Where mID = owner And username=%s", (account,))
     myresult1 = mycursor1.fetchall()
     mycursor1.close()
-    value = {}
-    # value['gameID'] = myresult1[0][0]
-    # value['title'] = myresult1[0][1]
-    # value['description'] = myresult1[0][2]
-    # value['status'] = myresult1[0][3]
-    # return json.dumps(value, ensure_ascii=False)
     if  len(myresult1) != 0:
+        value=[]
         i = 0
-        games = []
         for i in range(len(myresult1)):
             user = {}
-            user['gameID'] = str(myresult1[i][0])
+            user['gameID'] = myresult1[i][0]
             user['title'] = myresult1[i][1]
             user['description'] = myresult1[i][2]
-            user['status'] = str(myresult1[i][3])
-            games.append(user)
-        value['games'] = games
+            user['status'] = myresult1[i][3]
+            value.append(user)
         # data['users'] = users
-        return json.dumps(value, ensure_ascii=False)
+        return json.dumps(value,ensure_ascii=False)
     else:
         return "NOGAME"
 
@@ -95,8 +88,11 @@ def getAllQuestions():
 
     gameID=request.values.get('gameID')
     mycursor1 = db_connection.cursor()
+    mycursor2 = db_connection.cursor()
     mycursor1.execute("Select * From Question Where gID = %s", (gameID,))
+
     myresult1 = mycursor1.fetchall()
+
 
 
     mycursor1.close()
@@ -105,21 +101,28 @@ def getAllQuestions():
         i = 0
         for i in range(len(myresult1)):
             user = {}
-            user['gameID'] = myresult1[i][0]
-            user['title'] = myresult1[i][1]
-            user['description'] = myresult1[i][2]
-            user['status'] = myresult1[i][3]
-        #     "questionID": myresult[0][0],
-        #     "question": myresult[0][1],
-        #     "type": myresult[0][2],
-        #     "latitude": myresult[0][3],
-        #     "longitude": myresult[0][0],
-        #     "score": myresult[0][0],
-        #     "choice": myresult[0][0],
-        #     "feedback_right": myresult[0][0],
-        #     "feedback_wrong": myresult[0][0]
-        #     value.append(user)
-        #     data['users'] = users
+            user['questionID'] = myresult1[i][0]
+            user['question'] = myresult1[i][2]
+            user['type'] = myresult1[i][3]
+            user['latitude'] = myresult1[i][4]
+            user['longitude'] = myresult1[i][5]
+            user['score'] = myresult1[i][6]
+            mycursor2.execute("Select `content`,`status` From Choice Where qID = %s", (myresult1[i][0],))
+            myresult2 = mycursor2.fetchall()
+            print(myresult2)
+            j = 0
+            v=[]
+            for j in range(len(myresult2)):
+                u = {}
+                u['content'] = myresult2[j][0]
+                u['status'] = myresult2[j][1]
+                v.append(u)
+            user['choice'] = v
+            user['feedback_right'] = myresult1[i][7]
+            user['feedback_wrong'] = myresult1[i][8]
+            value.append(user)
+        # print(value)
+        mycursor2.close()
         return json.dumps(value, ensure_ascii=False)
     else:
         return "NOQuestion"
@@ -247,7 +250,11 @@ def getScore():
     myresult1 = mycursor1.fetchall()
     mycursor1.close()
     if  len(myresult1) != 0:
-        return myresult1
+        value = {
+            "score": myresult1[0][0],
+            "rank":myresult1[0][1]
+        }
+        return json.dumps(value)
     else:
         return "NOPlayer"
 
@@ -297,22 +304,52 @@ def getRank():
     mycursor1.execute("SELECT `nickname`,`score`,`rank` FROM Player Where gID = %s", (gameID,))
     myresult1 = mycursor1.fetchall()
     mycursor1.close()
-    return myresult1
+    value = []
+    i = 0
+    for i in range(len(myresult1)):
+        user = {}
+        user['nickname'] = myresult1[i][0]
+        user['score'] = myresult1[i][1]
+        user['rank'] = myresult1[i][2]
+        value.append(user)
+    return json.dumps(value, ensure_ascii=False)
+
 
 @app.route('/getQuestion/', methods=['GET'])
 def getQuestion():
 
     questionID = request.values.get('questionID')
     mycursor1 = db_connection.cursor()
-    mycursor1.execute("SELECT `question`,`qType`,`latitude`,`longitude`,`score`,`feedback_right`,"
-                      "`feedback_wrong` FROM Question Where QID = %s", (questionID,))
+    mycursor2 = db_connection.cursor()
+    mycursor1.execute("Select * From Question Where QID = %s", (questionID,))
 
     myresult1 = mycursor1.fetchall()
-    mycursor2 = db_connection.cursor()
-    mycursor2.execute("SELECT `content`,`status` FROM Choice Where qID = %s ", (questionID,))
-    myresult2 = mycursor2.fetchall()
+
     mycursor1.close()
-    mycursor2.close()
+    if len(myresult1) != 0:
+        value = []
+        user = {}
+        user['question'] = myresult1[0][2]
+        user['type'] = myresult1[0][3]
+        user['latitude'] = myresult1[0][4]
+        user['longitude'] = myresult1[0][5]
+        user['score'] = myresult1[0][6]
+        mycursor2.execute("Select `content`,`status` From Choice Where qID = %s", (questionID,))
+        myresult2 = mycursor2.fetchall()
+        # print(myresult2)
+        j = 0
+        v = []
+        for j in range(len(myresult2)):
+            u = {}
+            u['content'] = myresult2[j][0]
+            u['status'] = myresult2[j][1]
+            v.append(u)
+        user['choice'] = v
+        user['feedback_right'] = myresult1[0][7]
+        user['feedback_wrong'] = myresult1[0][8]
+        value.append(user)
+        mycursor2.close()
+        return json.dumps(value, ensure_ascii=False)
     return myresult1+myresult2
 
 
