@@ -35,9 +35,8 @@ def login():
     mycursor.execute("Select mID From Manager Where username = %s And password = %s", (account,password))
 
     myresult = mycursor.fetchall()
-    value = {
-        "account":myresult[0][0]
-    }
+    value = {}
+    value['account'] = myresult[0][0]
     mycursor.close()
     return json.dumps(value)
 
