@@ -11,14 +11,17 @@ import MapKit
 struct StartGameView: View {
     @State var ExitButtonState = false
     @State var RankButtonState = false
-    @State var region: MKCoordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 22.61, longitude: 120.27), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+    @State var Rank11:RankList = RankList(ranks: [])
+    @State var Question11:QuestionList=QuestionList(questions: [])
+    @State var region: MKCoordinateRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 22.63, longitude: 120.270), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
     @Binding var PlayerName : String
     var Rid : String
-    var pointsOfInterest = [
-        AnnotatedItem(name: "Times Square", coordinate: .init(latitude: Double(Question[0].latitude) ?? 0, longitude: Double(Question[0].longitude) ?? 0),ques: 0),
-        AnnotatedItem(name: "Flatiron Building", coordinate: .init(latitude: Double(Question[1].latitude) ?? 0, longitude: Double(Question[1].longitude) ?? 0),ques: 1),
-        AnnotatedItem(name: "Empire State Building", coordinate: .init(latitude: Double(Question[2].latitude) ?? 0, longitude: Double(Question[2].longitude) ?? 0),ques: 2)
-        ]
+//    var pointsOfInterest = [
+//        AnnotatedItem(name: "Times Square", coordinate: .init(latitude: Double(Question[0].latitude) ?? 0, longitude: Double(Question[0].longitude) ?? 0),ques: 0),
+//        AnnotatedItem(name: "Flatiron Building", coordinate: .init(latitude: Double(Question[1].latitude) ?? 0, longitude: Double(Question[1].longitude) ?? 0),ques: 1),
+//        AnnotatedItem(name: "Empire State Building", coordinate: .init(latitude: Double(Question[2].latitude) ?? 0, longitude: Double(Question[2].longitude) ?? 0),ques: 2)
+//        ]
+
     
     var body: some View {
         
@@ -37,6 +40,8 @@ struct StartGameView: View {
                 }
                 .position(x: 130)
                 HStack{
+                    let intg = addQuestions(Question11: Question11)
+                    let pointsOfInterest = addAnnotation()
                     Map(coordinateRegion: $region,showsUserLocation: true,annotationItems: pointsOfInterest){
                         item in MapAnnotation(coordinate: item.coordinate)
                         {
@@ -77,6 +82,8 @@ struct StartGameView: View {
                     }
                     Button(action:{
                         RankButtonState.toggle()
+                        updateRank(Rank11: Rank11)
+                        sortRank()
                     }){
                         RoundedRectangle(cornerRadius: 10)
                             .frame(width: 78, height: 46)
@@ -86,7 +93,9 @@ struct StartGameView: View {
                                     .foregroundColor(.white)
                                     .font(.system(size: 20, weight: .bold))
                                     .sheet(isPresented: $RankButtonState){
-                                    RankView()
+                                        RankView().onAppear(){
+                                            self.requestRank(gameID: Rid)
+                                        }
                                 }
                             )
                     
@@ -112,21 +121,39 @@ struct StartGameView: View {
             .background(.white)
         }
         .hiddenNavigationBarStyle()
+        .onAppear(){
+            self.generateQuestions(gameID: Rid)
+        }
     }
-//    func requestRank(gameID:String){
-//        getRank(gameID: gameID).send{
-//            result in
-//            switch result{
-//                case.success(let rank):
-//                    self.Rank = rank
-//                print(rank.players[0].name)
-//            case.failure(let error):
-//                print(error)
-//                print("fail")
-//                break
-//            }
-//        }
-//    }
+    func requestRank(gameID:String){
+        getRank(gameID: gameID).send{
+            result in
+            switch result{
+            case.success(let rank):
+                self.Rank11 = rank
+                print(rank.ranks[0].nickname)
+            case.failure(let error):
+                print(error)
+                print("fail")
+                break
+            }
+        }
+    }
+    
+    func generateQuestions(gameID:String){
+        getAllQuestions(gameID: Rid).send{
+            result in
+            switch result{
+            case.success(let ques):
+                self.Question11 = ques
+                print(ques.questions[0].question)
+            case.failure(let error):
+                print(error)
+                print("fail")
+                break
+            }
+        }
+    }
     
 }
 

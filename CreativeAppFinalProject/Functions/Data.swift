@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 var Rank: [RankData] = load("Score.json")
-let Question: [QuestionData] = load("ScoreTest.json")
+var Question: [QuestionData] = []//load("ScoreTest.json")
 let
 Ques1Choice = Choices(
     oneQuesChoice:[OneQuesChoices(id:"yes",status:1),
@@ -35,8 +35,8 @@ struct RankData: Identifiable,Codable,Hashable{
 
 func generateRankOutpu(Rank:RankList)->[RankData]{
     var RankOutput:[RankData] = []
-    for i in 0..<Rank.players.count{
-        RankOutput.append(RankData(id: Rank.players[i].name, score: String(Rank.players[i].score), rank: String(Rank.players[i].rank)))
+    for i in 0..<Rank.ranks.count{
+        RankOutput.append(RankData(id: Rank.ranks[i].nickname, score: String(Rank.ranks[i].score), rank: String(Rank.ranks[i].rank)))
     }
     return RankOutput
 }
@@ -128,3 +128,40 @@ func sortRank()->[RankData]{
     return Rank
 }
 
+func updateRank(Rank11:RankList)->Int{
+    var inRank = false
+    for i in( 0..<Rank11.ranks.count){
+        inRank = false
+        for j in (0..<Rank.count){
+            if(Rank[j].id==Rank11.ranks[j].nickname){
+                Rank[j].rank = String(Rank11.ranks[i].rank)
+                Rank[j].score = String(Rank11.ranks[i].score)
+                break
+            }
+            else{
+                inRank = true
+            }
+        }
+        if(inRank){
+            Rank.append(RankData(id: Rank11.ranks[i].nickname, score: String(Rank11.ranks[i].score), rank: String(Rank11.ranks[i].rank)))
+        }
+    }
+    return 0
+}
+
+func addQuestions(Question11:QuestionList)->Int{
+    for i in(0..<Question11.questions.count){
+        Question.append(QuestionData(id:String( Question.count+1), score: String(Question11.questions[i].score), question: Question11.questions[i].question, feedback_true: Question11.questions[i].feedbackRight, feedback_false: Question11.questions[i].feedbackWrong, longitude: String(Question11.questions[i].longitude), latitude: String(Question11.questions[i].latitude)))
+    }
+    return 0
+}
+
+
+func addAnnotation()->[AnnotatedItem]{
+    var pointsOfIntrest:[AnnotatedItem] = []
+    for item in Question{
+        let q = Int(item.id) ?? 1
+        pointsOfIntrest.append(AnnotatedItem(name: item.question, coordinate: .init(latitude: Double(item.latitude) ?? 0, longitude: Double(item.longitude) ?? 0), ques: q-1))
+    }
+    return pointsOfIntrest
+}

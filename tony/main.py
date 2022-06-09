@@ -107,7 +107,9 @@ def getAllQuestions():
             user['type'] = myresult1[i][3]
             user['latitude'] = myresult1[i][4]
             user['longitude'] = myresult1[i][5]
-            user['score'] = myresult1[i][6]
+            user['score'] = myresult1[i][6]  
+            user['feedbackRight'] = myresult1[i][7]
+            user['feedbackWrong'] = myresult1[i][8]
             mycursor2.execute("Select `content`,`status` From Choice Where qID = %s", (myresult1[i][0],))
             myresult2 = mycursor2.fetchall()
             print(myresult2)
@@ -119,8 +121,6 @@ def getAllQuestions():
                 u['status'] = myresult2[j][1]
                 v.append(u)
             user['choice'] = v
-            user['feedback_right'] = myresult1[i][7]
-            user['feedback_wrong'] = myresult1[i][8]
             value.append(user)
         # print(value)
         mycursor2.close()

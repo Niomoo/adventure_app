@@ -8,7 +8,7 @@
 import Foundation
 
 struct Player {
-    var name: String
+    var nickname: String
     var score: Int
     var rank: Int
 }
@@ -60,21 +60,21 @@ struct ManageGame {
 extension ManageGame: Codable { }
 
 struct ChoiceA {
-    var text: String
-    var answer: Int
+    var content: String
+    var status: Int
 }
 extension ChoiceA: Codable { }
 
 struct QuestionA {
     var questionID: Int
     var question: String
-    var qType: Int
-    var latitude: String
-    var longitude: String
+    var type: Int
+    var latitude: Double
+    var longitude: Double
     var score: Int
     var choice: [ChoiceA]
-    var feedback_right: String
-    var feedback_wrong: String
+    var feedbackRight: String
+    var feedbackWrong: String
 }
 extension QuestionA: Codable { }
 
@@ -109,7 +109,7 @@ struct QuestionList {
 extension QuestionList: Codable { }
 
 struct RankList {
-    var players: [Player]
+    var ranks: [Player]
 }
 extension RankList: Codable { }
 

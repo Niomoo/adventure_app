@@ -30,9 +30,10 @@ struct EnterName: View {
                             .stroke(Color.white,lineWidth: 3))
                 }
                 VStack{
-                    NavigationLink(destination:StartGameView(PlayerName:$nickName,Rid: roomID).onAppear {
-                        self.joinRoom(roomID: roomID, nickName: nickName)
-                    }){
+                    NavigationLink(destination:StartGameView(PlayerName:$nickName,Rid: roomID)
+//                        .onAppear {
+//                        self.joinRoom(roomID: roomID, nickName: nickName)}
+                    ){
                         Text("Start")
                             .foregroundColor(.white)
                             .frame(width: 300, height: 50)
