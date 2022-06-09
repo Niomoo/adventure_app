@@ -16,7 +16,7 @@ struct questionBarView: View {
                     .foregroundColor(.black)
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(.black,lineWidth: 3)
+                            .stroke(.white,lineWidth: 3)
                             .frame(width:200,height: 60)
                     )
                 
