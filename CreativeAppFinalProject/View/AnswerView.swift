@@ -13,6 +13,7 @@ struct AnswerView: View {
     @State var RankButtonState=false
     @Binding var pName:String
     @Binding var opt:Int
+    @Binding var Rank:RankList
     var correct = false
     var body: some View {
         NavigationView{
@@ -64,8 +65,7 @@ struct AnswerView: View {
                 }
                 VStack{
                     if(correct){
-                        var i = updatescore(PlayerName: pName,AddScore: Question[QuesIndex].score)
-                        var k = sortRank()
+//                        var k = sortRank()
                         Text("恭喜答對獲得\(Question[QuesIndex].score)分")
                             .font(.system(size: 25,weight: .bold))
                             .foregroundColor(.white)
@@ -115,7 +115,7 @@ struct AnswerView: View {
                                 .frame(width:300,height: 60)
                         )
                         .sheet(isPresented: $RankButtonState){
-                            RankView()
+                            RankView(RankIn: $Rank)
                         }
                 })
                         
@@ -135,11 +135,11 @@ struct AnswerView: View {
         .hiddenNavigationBarStyle()
         
     }
-struct AnswerView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            AnswerView(Rid: "123", pName:.constant("abc"),opt: .constant(1))
-        }
-    }
-}
+//struct AnswerView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Group {
+//            AnswerView(Rid: "123", pName:.constant("abc"),opt: .constant(1))
+//        }
+//    }
+//}
 }

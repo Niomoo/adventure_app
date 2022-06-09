@@ -8,7 +8,8 @@
 import Foundation
 import SwiftUI
 
-var Rank: [RankData] = load("Score.json")
+//var Rank: [RankData] = load("Score.json")
+//var Rank:RankList = RankList(players: [])
 let Question: [QuestionData] = load("ScoreTest.json")
 let
 Ques1Choice = Choices(
@@ -32,6 +33,16 @@ struct RankData: Identifiable,Codable,Hashable{
     var score:String
     var rank:String
 }
+
+func generateRankOutpu(Rank:RankList)->[RankData]{
+    var RankOutput:[RankData] = []
+    for i in 0..<Rank.players.count{
+        RankOutput.append(RankData(id: Rank.players[i].name, score: String(Rank.players[i].score), rank: String(Rank.players[i].rank)))
+    }
+    return RankOutput
+}
+
+
 
 struct QuestionData:Identifiable,Codable{
     var id:String
@@ -84,11 +95,11 @@ func load<T: Decodable>(_ filename: String)-> T{
     }
 }
 
-func getDat(PlayerName:String)->[String]{
-    var currentScore:String = ""
-    var currentRank:String = ""
-    for item in Rank{
-        if(item.id==PlayerName){
+func getDat(PlayerName:String,Rank:RankList)->[Int]{
+    var currentScore:Int=0
+    var currentRank:Int=0
+    for item in Rank.players{
+        if(item.name==PlayerName){
             currentRank = item.rank
             currentScore = item.score
         }
@@ -96,25 +107,24 @@ func getDat(PlayerName:String)->[String]{
     return [currentScore,currentRank]
 }
 
-func updatescore(PlayerName:String,AddScore:String)->RankData{
-    var r:RankData=Rank[0]
-    var addScore = Int(AddScore) ?? 0
-    for i in (0..<Rank.count){
-        if(Rank[i].id==PlayerName){
-            var score = Int(Rank[i].score) ?? 0
+func updatescore(PlayerName:String,AddScore:String,Rank:RankList)->Int{
+    let addScore = Int(AddScore) ?? 0
+    var score = 0
+    for i in (0..<Rank.players.count){
+        if(Rank.players[i].name==PlayerName){
+            score = Int(Rank.players[i].score)
             score+=addScore
-            Rank[i].score = String(score)
-            r = Rank[i]
+            //Rank.players[i].score = score
         }
     }
-    return r
+    return score
 }
 
-func sortRank()->[RankData]{
-    Rank.sort{$0.score>$1.score}
-    for i in (0..<Rank.count){
-        Rank[i].rank = String(i+1)
-    }
-    return Rank
-}
+//func sortRank()->[RankData]{
+//    Rank.sort{$0.score>$1.score}
+//    for i in (0..<Rank.count){
+//        Rank[i].rank = String(i+1)
+//    }
+//    return Rank
+//}
 

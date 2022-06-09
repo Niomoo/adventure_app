@@ -28,9 +28,9 @@ struct rankBarView: View {
     }
 }
 
-struct rankBarView_Previews: PreviewProvider {
-    static var previews: some View {
-        rankBarView(rank: Rank[0])
-            .previewLayout(.fixed(width: 320, height: 60))
-    }
-}
+//struct rankBarView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        rankBarView(rank: Rank[0])
+//            .previewLayout(.fixed(width: 320, height: 60))
+//    }
+//}

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EnterName: View {
     @State var nickName = ""
+    //@State var Question = QuestionList(questions: [])
     @Binding var roomID: String
     var body: some View {
         
@@ -61,6 +62,15 @@ struct EnterName: View {
         .navigationBarHidden(true)
     }
     func joinRoom(roomID: String, nickName: String){
+//        getAllQuestions(gameID: roomID).send{
+//            result in
+//            switch result{
+//            case.success(let question):
+//                self.Question=question
+//            case.failure:
+//                break
+//            }
+//        }
         let player = NewPlayer(gameID: roomID, name: nickName)
         joinGame(player: player).send { result in
             print()
