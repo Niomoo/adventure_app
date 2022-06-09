@@ -10,8 +10,8 @@ import SwiftUI
 struct EditGameView: View {
     @State var account: String
     @State var gameID: Int32
-    @State private var title = ""
-    @State private var description = ""
+    @State private var title = "踏溯高雄"
+    @State private var description = "臺灣南方最繁華的國際城市——高雄市，為2009年世界運動會主辦城市，因受海洋氣候調節，全年陽光普照、氣候宜人，有獨特的「海洋首都」特性。近年來大力推展觀光事業，已成為全臺最美麗的城市之一。"
     var body: some View {
         NavigationView{
             VStack(spacing:15){
