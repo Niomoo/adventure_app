@@ -113,20 +113,20 @@ struct StartGameView: View {
         }
         .hiddenNavigationBarStyle()
     }
-    func requestRank(gameID:String){
-        getRank(gameID: gameID).send{
-            result in
-            switch result{
-                case.success(let rank):
-                    self.Rank = rank
-                print(rank.players[0].name)
-            case.failure(let error):
-                print(error)
-                print("fail")
-                break
-            }
-        }
-    }
+//    func requestRank(gameID:String){
+//        getRank(gameID: gameID).send{
+//            result in
+//            switch result{
+//                case.success(let rank):
+//                    self.Rank = rank
+//                print(rank.players[0].name)
+//            case.failure(let error):
+//                print(error)
+//                print("fail")
+//                break
+//            }
+//        }
+//    }
     
 }
 

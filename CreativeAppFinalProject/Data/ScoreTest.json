@@ -5,8 +5,8 @@
         "latitude":"22.61987",
         "longitude":"120.28149",
         "score":"3",
-        "feedback_true":"go left",
-        "feedback_false":"go right"
+        "feedback_true":"恭喜獲得寶藏",
+        "feedback_false":"qq"
      },
      {
         "id":"2",
@@ -14,8 +14,8 @@
         "latitude":"22.6268",
         "longitude":"120.26385",
         "score":"2",
-        "feedback_true":"go left",
-        "feedback_false":"go right"
+        "feedback_true":"太神啦",
+        "feedback_false":"GG"
      },
      {
         "id":"3",
@@ -23,7 +23,7 @@
         "latitude":"22.61799",
         "longitude":"120.28644",
         "score":"1",
-        "feedback_true":"go left",
-        "feedback_false":"go right"
+        "feedback_true":"你是最棒ㄉ",
+        "feedback_false":"加油喔"
      }
 ]

@@ -21,8 +21,8 @@ Ques2Choice = Choices(
                    OneQuesChoices(id:"ncku",status:0)])
 let
 Ques3Choice = Choices(
-    oneQuesChoice:[OneQuesChoices(id:"E",status:1),
-                   OneQuesChoices(id:"F",status:0)])
+    oneQuesChoice:[OneQuesChoices(id:"1325",status:1),
+                   OneQuesChoices(id:"25",status:0)])
 
 let Choice = [Ques1Choice,Ques2Choice,Ques3Choice]
 
