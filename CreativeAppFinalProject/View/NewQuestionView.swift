@@ -115,13 +115,21 @@ struct NewQuestionView: View {
                     .background(Color(UIColor(red: 0.839, green: 0.89, blue: 0.886, alpha: 1).cgColor))
                     .cornerRadius(8)
                     .frame(width: 315, height: 50)
-                NavigationLink(destination: EditQuestionView(account:account, gameID: gameID)) {
-                    Text("Create")
-                        .frame(width: 315, height: 50)
-                        .font(.system(size:18))
-                        .foregroundColor(.white)
-                        .border(/*@START_MENU_TOKEN@*/Color.white/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/3/*@END_MENU_TOKEN@*/)
-                        .cornerRadius(8)
+                Group {
+                    NavigationLink(destination: EditQuestionView(account: account, gameID: gameID)) {
+                        Text("Edit")
+                            .frame(width: 315, height: 50)
+                            .font(.system(size:18))
+                            .foregroundColor(.white)
+                            .border(/*@START_MENU_TOKEN@*/Color.white/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/3/*@END_MENU_TOKEN@*/)
+                            .cornerRadius(8)
+                    }
+                    NavigationLink(destination: EditQuestionView(account: account, gameID: gameID)) {
+                        Text("Back")
+                            .frame(width: 315, height: 50)
+                            .font(.system(size:18))
+                            .foregroundColor(.white)
+                    }
                 }
                 Divider()
             }

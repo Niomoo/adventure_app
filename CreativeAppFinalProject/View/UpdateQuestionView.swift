@@ -10,17 +10,15 @@ import SwiftUI
 struct UpdateQuestionView: View {
     @State var account: String
     @State var gameID:Int32
-    @State var question = ""
-    @State var choice1 = ""
-    @State var choice2 = ""
-    @State var choice3 = ""
-    @State var answer1 = false
+    @State var question = "高雄輕軌有經過駁二特區嗎？"
+    @State var choice1 = "yes"
+    @State var choice2 = "no"
+    @State var answer1 = true
     @State var answer2 = false
-    @State var answer3 = false
-    @State var feedback1 = ""
-    @State var feedback2 = ""
-    @State var score = ""
-    @State var location = ""
+    @State var feedback1 = "go left"
+    @State var feedback2 = "go right"
+    @State var score = "3"
+    @State var location = "22.61987, 120.28149"
 
     var body: some View {
         NavigationView{
@@ -68,18 +66,6 @@ struct UpdateQuestionView: View {
                         .frame(width: 315, height: 50, alignment: .leading)
                     }
                     .padding(.bottom)
-                    ZStack {
-                        TextField("choice3", text: $choice3, prompt: Text("Ｃ"))
-                            .padding()
-                            .background(Color(UIColor(red: 0.839, green: 0.89, blue: 0.886, alpha: 1).cgColor))
-                            .cornerRadius(8)
-                            .frame(width: 315, height: 50, alignment: .leading)
-                        Toggle(isOn: $answer3) {
-                        }
-                        .frame(width: 315, height: 50, alignment: .leading)
-                    }
-                    .padding(.bottom)
-                    
                 }
                 Text("Feedback")
                     .font(Font.system(size:14))
@@ -115,13 +101,21 @@ struct UpdateQuestionView: View {
                     .background(Color(UIColor(red: 0.839, green: 0.89, blue: 0.886, alpha: 1).cgColor))
                     .cornerRadius(8)
                     .frame(width: 315, height: 50)
-                NavigationLink(destination: EditQuestionView(account: account, gameID: gameID)) {
-                    Text("Edit")
-                        .frame(width: 315, height: 50)
-                        .font(.system(size:18))
-                        .foregroundColor(.white)
-                        .border(/*@START_MENU_TOKEN@*/Color.white/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/3/*@END_MENU_TOKEN@*/)
-                        .cornerRadius(8)
+                Group {
+                    NavigationLink(destination: EditQuestionView(account: account, gameID: gameID)) {
+                        Text("Edit")
+                            .frame(width: 315, height: 50)
+                            .font(.system(size:18))
+                            .foregroundColor(.white)
+                            .border(/*@START_MENU_TOKEN@*/Color.white/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/3/*@END_MENU_TOKEN@*/)
+                            .cornerRadius(8)
+                    }
+                    NavigationLink(destination: EditQuestionView(account: account, gameID: gameID)) {
+                        Text("Back")
+                            .frame(width: 315, height: 50)
+                            .font(.system(size:18))
+                            .foregroundColor(.white)
+                    }
                 }
                 Divider()
             }
