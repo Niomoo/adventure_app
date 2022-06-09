@@ -96,6 +96,7 @@ def getAllQuestions():
 
 
     mycursor1.close()
+    data={}
     if  len(myresult1) != 0:
         value = []
         i = 0
@@ -123,7 +124,8 @@ def getAllQuestions():
             value.append(user)
         # print(value)
         mycursor2.close()
-        return json.dumps(value, ensure_ascii=False)
+        data['questions'] = value
+        return json.dumps(data, ensure_ascii=False)
     else:
         return "NOQuestion"
 
@@ -304,6 +306,7 @@ def getRank():
     mycursor1.execute("SELECT `nickname`,`score`,`rank` FROM Player Where gID = %s", (gameID,))
     myresult1 = mycursor1.fetchall()
     mycursor1.close()
+    data = {}
     value = []
     i = 0
     for i in range(len(myresult1)):
@@ -312,7 +315,8 @@ def getRank():
         user['score'] = myresult1[i][1]
         user['rank'] = myresult1[i][2]
         value.append(user)
-    return json.dumps(value, ensure_ascii=False)
+    data['ranks'] = value
+    return json.dumps(data, ensure_ascii=False)
 
 
 @app.route('/getQuestion/', methods=['GET'])
@@ -326,6 +330,7 @@ def getQuestion():
     myresult1 = mycursor1.fetchall()
 
     mycursor1.close()
+    data={}
     if len(myresult1) != 0:
         value = []
         user = {}
@@ -348,8 +353,9 @@ def getQuestion():
         user['feedback_right'] = myresult1[0][7]
         user['feedback_wrong'] = myresult1[0][8]
         value.append(user)
+        data['questions']=value
         mycursor2.close()
-        return json.dumps(value, ensure_ascii=False)
+        return json.dumps(data, ensure_ascii=False)
     else:
         return "NOquestion"
 
