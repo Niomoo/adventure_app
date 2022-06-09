@@ -27,8 +27,8 @@ protocol APIRequest {
 }
 
 extension APIRequest {
-    var host: String { "0.0.0.0" }
-    var port: Int { 3000 }
+    var host: String { "http://5ee8-59-127-156-17.ngrok.io" }
+//    var port: Int { 3000 }
 }
 
 extension APIRequest {
@@ -44,7 +44,7 @@ extension APIRequest {
 
         components.scheme = "http"
         components.host = host
-        components.port = port
+//        components.port = port
         components.path = path
         components.queryItems = queryItems
 
