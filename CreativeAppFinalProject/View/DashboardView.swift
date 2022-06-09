@@ -67,6 +67,20 @@ struct DashboardView: View {
         }
         .navigationBarTitle("")
         .navigationBarHidden(true)
+        .onAppear() {
+            self.listAllGames(account: account)
+        }
+    }
+    func listAllGames(account: String){
+        getAllGames(manager: account).send { result in
+            switch result {
+            case .success(let result):
+//                allGames = result.games
+                print(result)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
 
